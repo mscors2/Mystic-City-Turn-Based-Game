@@ -147,6 +147,86 @@ public class Character
 				current.addCharacter(npc);
 			}
 		}
+		else if (version == 5.0)
+		{
+			// Setup .gdf parsing
+			String line = "";
+			String[] arr = new String[0];
+			
+			// TYPE ->		"PLAYER" or "NPC"
+			line = CleanLineScanner.getCleanLine(sc);
+			arr = line.split("\\s+");
+	
+			// Assign
+			String type = arr[0];
+	
+			// PlaceID ->	> 0 indicates the starting place, == 0 indicates random and < 0 not permitted
+			line = CleanLineScanner.getCleanLine(sc);
+			arr = line.split("\\s+");
+			
+			// Assign
+			int placeID = Integer.parseInt(arr[1]);
+			Place current = null;
+			if (placeID == 0)
+				current = Place.getRandomPlace();
+			else
+				current = Place.getPlaceByID(Math.abs(placeID));
+			
+			// ID long_name_with_spaces
+			// ID ->	unique integer > 0
+			// name ->	resulting string with multiple spaces in it
+			line = CleanLineScanner.getCleanLine(sc);
+			arr = line.split("\\s+");
+			
+			// Error check
+			if (arr.length < 2)
+			{
+				System.err.println("GDF->error: \n"
+						+ "Character should have at least two strings in the second line \n");
+				return;
+			}
+			
+			// Assign
+			int ID = Integer.parseInt(arr[0]);
+			String name = "";
+			for (int i = 1; i < arr.length; i++)
+				name += arr[i] + " ";
+			name = name.trim();
+			
+			// ndescr ->		number of lines of the description
+			// description ->	description itself ("\n" are in it)
+			line = CleanLineScanner.getCleanLine(sc);
+			arr = line.split("\\s+");
+			
+			// Error check
+			if (arr.length != 1)
+			{
+				System.err.println("GDF->error: \n"
+						+ "Character should only have one string on the third line \n");
+				return;
+			}
+			
+			// Assign
+			int ndescr = Integer.parseInt(arr[0]);
+			String description = "";
+			for (int i = 0; i < ndescr; i++)
+				description += CleanLineScanner.getCleanLine(sc) + "\n";
+			description = description.trim();
+			
+			// Finally, initialize specific Character and add to collections
+			if (type.equalsIgnoreCase("PLAYER"))
+			{
+				Player p = new Player(ID, name, description, type, current);
+				Game.addCharacter(ID, p);
+				current.addCharacter(p);
+			}
+			else
+			{
+				NPC npc = new NPC(ID, name, description, type, current);
+				Game.addCharacter(ID, npc);
+				current.addCharacter(npc);
+			}	
+		}
 		else
 		{
 			// Invalid version
