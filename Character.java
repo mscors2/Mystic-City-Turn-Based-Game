@@ -165,7 +165,7 @@ public class Character
 			arr = line.split("\\s+");
 			
 			// Assign
-			int placeID = Integer.parseInt(arr[1]);
+			int placeID = Integer.parseInt(arr[0]);
 			Place current = null;
 			if (placeID == 0)
 				current = Place.getRandomPlace();
