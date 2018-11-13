@@ -63,7 +63,7 @@ public class Character
 					+ "Character building is from version 4.0 and up \n");
 			return;
 		}
-		else if (version == 4.0 || version == 5.0)
+		else if (version == 4.0)
 		{
 			// Setup .gdf parsing
 			String line = "";
@@ -147,7 +147,7 @@ public class Character
 				current.addCharacter(npc);
 			}
 		}
-		else if (version == 5.0)
+		else if (version >= 5.0)
 		{
 			// Setup .gdf parsing
 			String line = "";
