@@ -175,133 +175,165 @@ public class Character
 	public void makeMove(Move move)
 	{			
 		// Switch move
-		switch (move.type())
+		boolean hasMoved = false;
+		while (!hasMoved)
 		{
-			// All possible moves
-			case LOOK:
+			switch (move.type())
 			{
-				// Re-print the current Place information
-				System.out.println("*Really? Just look above this message... ugh okay...* \n");
-				current.display();
-				break;
-			}
-			case QUIT:
-			{
-				// Exit/Quit out of the entire game (lot of power for any Player)
-				System.out.println("*Well at least you tried, it's been fun! Try again sometime won't you?* \n");
-				System.exit(0);
-			}
-			case INVENTORY:
-			{
-				// Empty vs Non-empty collection
-				if (artifacts.size() < 1)
+				// All possible moves
+				case LOOK:
 				{
-					// No Artifacts
-					System.out.println("*Your bag falls like a feather as you set it on the ground...* \n"
-							+ "*There's nothing inside...* \n");
+					// Re-print the current Place information
+					System.out.println("*Really? Just look above this message... ugh okay...* \n");
+					current.display();
+					break;
 				}
-				else
+				case QUIT:
 				{
-					// Print all Artifacts
-					System.out.println("*You put you bag on the ground and look inside...*");
-					String allArtifacts = "";
-					for (Artifact x : artifacts)
-						allArtifacts += x.name() + ", ";
-					allArtifacts = allArtifacts.substring(0, allArtifacts.length() - 2);
-					System.out.println("[" + allArtifacts + "] \n");
+					// Exit/Quit out of the entire game (lot of power for any Player)
+					System.out.println("*Well at least you tried, it's been fun! Try again sometime won't you?* \n");
+					System.exit(0);
 				}
-				break;
-			}
-			case GO:
-			{
-				// Attempt to turn our given argument into a valid Direction and follow it
-				String direction = move.argument();
-				Place result = current.followDirection(direction);
-				
-				// Invalid Direction?
-				if (result == current)
+				case INVENTORY:
 				{
-					System.out.println("*Whoops! You can't go that way!* \n");
+					// Empty vs Non-empty collection
+					if (artifacts.size() < 1)
+					{
+						// No Artifacts
+						System.out.println("*Your bag falls like a feather as you set it on the ground...* \n"
+								+ "*There's nothing inside...* \n");
+					}
+					else
+					{
+						// Print all Artifacts
+						System.out.println("*You put you bag on the ground and look inside...*");
+						String allArtifacts = "";
+						for (Artifact x : artifacts)
+							allArtifacts += x.name() + ", ";
+						allArtifacts = allArtifacts.substring(0, allArtifacts.length() - 2);
+						System.out.println("[" + allArtifacts + "] \n");
+					}
+					break;
 				}
-				else
-				{					
-					// Update our new Place to our current Place
-					current.removeCharacter(this);
-					result.addCharacter(this);
-					current = result;
+				case GO:
+				{
+					// Attempt to turn our given argument into a valid Direction and follow it
+					String direction = move.argument();
+					Place result = current.followDirection(direction);
 					
-					// Check for the EXIT Place
-					if (current.match("EXIT"))
+					// Invalid Direction?
+					if (result == current)
 					{
-						System.out.println("*CONGRATULATIONS! You beat the game!* \n");
-						System.exit(0);
+						System.out.println("*Whoops! You can't go that way!* \n");
 					}
+					else
+					{					
+						// Update our new Place to our current Place
+						current.removeCharacter(this);
+						result.addCharacter(this);
+						current = result;
+						
+						// Valid move
+						hasMoved = true;
+						
+						// Check for the EXIT Place
+						if (current.match("EXIT"))
+						{
+							System.out.println("*CONGRATULATIONS! You beat the game!* \n");
+							System.exit(0);
+						}
+					}
+					break;
 				}
-				break;
-			}
-			case GET:
-			{
-				// Attempt to turn our given argument into an Artifact name and retrieve it
-				Artifact result = current.removeArtifactByName(move.argument());
-				
-				// Invalid Artifact?
-				if (result == null)
+				case GET:
 				{
-					System.out.println("*Sorry but the '" + move.argument() + "' doesn't exist here...* \n");
-				}
-				else
-				{
-					// Update our current Place and our own collection of Artifacts
-					System.out.println("*Hooray! You've now got the '" + result.name() + "' key!* \n");
-					artifacts.add(result);
-				}
-				break;
-			}
-			case DROP:
-			{
-				// Attempt to find the given Artifact name in our collection
-				for (Artifact x : artifacts)
-				{
-					// Valid Artifact name?
-					if (x.match(move.argument()))
+					// Attempt to turn our given argument into an Artifact name and retrieve it
+					Artifact result = current.removeArtifactByName(move.argument());
+					
+					// Invalid Artifact?
+					if (result == null)
 					{
-						// We have it! Now update the current Place and our own collection of Artifacts
-						System.out.println("*You place the '" + x.name() + "' back on the floor* \n");
-						current.addArtifact(x);
-						artifacts.remove(x);
-						return;
+						System.out.println("*Sorry but the '" + move.argument() + "' doesn't exist here...* \n");
 					}
-				}
-				
-				// Invalid Artifact name
-				System.out.println("*Whoops you don't even have the '" + move.argument() + "'...* \n");
-				break;
-			}
-			case USE:
-			{
-				// Attempt to find the given Artifact name in our collection
-				for (Artifact x : artifacts)
-				{
-					// Valid Artifact name?
-					if (x.match(move.argument()))
+					else
 					{
-						// We have it! Now use it on every possible Direction
-						System.out.println("*Let's try the '" + x.name() + "' on every door!* \n");
-						current.useKey(x);
-						return;
+						// Update our current Place and our own collection of Artifacts
+						System.out.println("*Hooray! You've now got the '" + result.name() + "' key!* \n");
+						artifacts.add(result);
 					}
+					break;
 				}
-				
-				// Invalid Artifact name
-				System.out.println("*Slow down buddy we don't even have the '" + move.argument() + "'!* \n");
-				break;
+				case DROP:
+				{
+					// Attempt to find the given Artifact name in our collection
+					int count = 0;
+					int size = artifacts.size();
+					for (Artifact x : artifacts)
+					{
+						// Valid Artifact name?
+						if (x.match(move.argument()))
+						{
+							// We have it! Now update the current Place and our own collection of Artifacts
+							System.out.println("*You place the '" + x.name() + "' back on the floor* \n");
+							current.addArtifact(x);
+							artifacts.remove(x);
+							break;
+						}
+						count++;
+					}
+					
+					// Invalid Artifact name
+					if (count == size)
+						System.out.println("*Whoops you don't even have the '" + move.argument() + "'...* \n");
+					break;
+				}
+				case USE:
+				{
+					// Attempt to find the given Artifact name in our collection
+					int count = 0;
+					int size = artifacts.size();
+					for (Artifact x : artifacts)
+					{
+						// Valid Artifact name?
+						if (x.match(move.argument()))
+						{
+							// We have it! Now use it on every possible Direction
+							System.out.println("*Let's try the '" + x.name() + "' on every door!* \n");
+							current.useKey(x);
+							break;
+						}
+						count++;
+					}
+					
+					// Invalid Artifact name
+					if (count == size)
+						System.out.println("*Slow down buddy we don't even have the '" + move.argument() + "'!* \n");
+					break;
+				}
+				case PASS:
+				{
+					// Print a PASS message and move on
+					System.out.println("*Well aren't you a useful hero... NEXT!!!* \n");
+					
+					// Valid move
+					hasMoved = true;
+					
+					break;
+				}
 			}
-			case PASS:
+			
+			// Do we need to move again?
+			if (type.equalsIgnoreCase("PLAYER") && !hasMoved)
 			{
-				// Print a PASS message and move on
-				System.out.println("*Well aren't you a useful hero... NEXT!!!* \n");
-				break;
+				// Get a new move from the Player
+				move = new UI().getMove(this, current);
 			}
+			else
+			{
+				// Skip AI who made a bad move
+				hasMoved = true;
+			}
+			
 		}
 	}
 

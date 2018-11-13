@@ -6,6 +6,7 @@
  */
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Game 
 {
@@ -121,6 +122,17 @@ public class Game
 				Character c = characters.get(key);
 				c.makeMove();
 				System.out.println("//------------------------------------------------------------------------// \n");
+				
+				// Give the user some time to read the logs
+				try 
+				{
+					TimeUnit.SECONDS.sleep((long) 4.5);
+				} 
+				catch (InterruptedException e) 
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
