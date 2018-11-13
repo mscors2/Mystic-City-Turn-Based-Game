@@ -1,1 +1,1 @@
-Hello Vanson!
+This is a new string
