@@ -23,7 +23,7 @@ public class Place {
 					+ "Place building is from version 3.1 and up \n");
 			return;
 		}
-		else if (version == 3.1 || version == 4.0 || version == 5.0)
+		else if (version >= 3.1)
 		{
 			// Setup .gdf parsing
 			String line = "";
