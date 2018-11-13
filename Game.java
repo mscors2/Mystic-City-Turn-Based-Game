@@ -121,6 +121,7 @@ public class Game
 			{
 				Character c = characters.get(key);
 				c.makeMove();
+				System.out.println("Retrieving next hero...\n");
 				System.out.println("//------------------------------------------------------------------------// \n");
 				
 				// Give the user some time to read the logs

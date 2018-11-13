@@ -220,12 +220,19 @@ public class Character
 				Game.addCharacter(ID, p);
 				current.addCharacter(p);
 			}
+			else if (type.equalsIgnoreCase("JOKER"))
+			{
+				Joker j = new Joker(ID, name, description, type, current);
+				Game.addCharacter(ID, j);
+				current.addCharacter(j);
+			}
 			else
 			{
+				// Default to NPC
 				NPC npc = new NPC(ID, name, description, type, current);
 				Game.addCharacter(ID, npc);
 				current.addCharacter(npc);
-			}	
+			}
 		}
 		else
 		{
@@ -486,5 +493,13 @@ public class Character
 	public void addArtifact(Artifact a)
 	{
 		artifacts.add(a);
+	}
+	
+	/*
+	 * ADDED: Type getter method
+	 */
+	public String type()
+	{
+		return type;
 	}
 }
