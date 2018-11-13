@@ -142,24 +142,28 @@ DIRECTIONS 35	//Thirty five directions defined ( No number 15 )
 
 CHARACTERS 4	// Really should have more, but let's start with two of each.
 
-PLAYER 		 12		// A player in the Entrance Hall, where expected
+PLAYER 		 
+12		// A player in the Entrance Hall, where expected
 42	Zaphod Beeblrox
 2
 Zaphod Beeblebrox is the President of the Universe
 He has 2 heads and 3 arms, and likes to have a good time.
 
-NPC		13		// An Ogre for the Ogre's Lair
+NPC		
+13		// An Ogre for the Ogre's Lair
 2		The Ugly Green Ogre
 2
 The Ugly Green Ogre is huge, green, slimy, and ill-tempered.
 He can't stand up in a normal room, which has lead to a permanent slouch.
 
-NPC		0		//  Where oh where can the Leprechaun be ?
+NPC		
+0		//  Where oh where can the Leprechaun be ?
 3		A Cheerful Leprechaun
 1
 The Cheerful Leprechaun sings and dances about his pot o' gold !
 
-PLAYER		0		// A player in a random spot?  Interesting!
+PLAYER		
+0		// A player in a random spot?  Interesting!
 10		Lost Wanderer   
 3
 This lost wanderer needs help.
@@ -168,15 +172,18 @@ Not all who wander are lost, but this one is.
 
 
 ARTIFACTS	14	// Semi-random artifacts - New ones at the beginning.
+//TYPES: 0 - container, 1 wand, 2 book, 3 treasure
 
 -42
-21	20	10	0	Hitchiker's Guide
+21	20	10	0	Hitchiker's Guide 
+2 //type book
 2
 The Hitchiker's Guide appears as a small leather-bound book,
 with images of stars and planets on the cover.
 
 -3
 22	100	20	0	Pot O Gold
+0 //type container
 1
 This pot o' gold is filled with shiny gold coins.
 
@@ -187,6 +194,7 @@ This four-leaf clover has been gold plated, to form a beautiful pendant.
 
 23
 1		1000	-1  0	Jewel-encrusted chest	// Too heavy to move!
+0 //container type
 4
 The chest is about two feet by 3 feet by 2 feet high.
 It appears to be made of solid gold, encrusted with 
@@ -208,43 +216,51 @@ There seems to be one good dose in the bottle.
 
 101
 4		50	1	0  Holly wand
+1 //artifact type wand
 1
 This wand is light and delicate, fashioned of holly wood.
 
 11
 5		50	1	0  Parchment scroll
+2 //type book
 1
 The scroll just says "XYZZY"
 
 105
 6		100	1	0  Sparkling rubies
+3 //type treasure
 1
 The rubies are bright, shiny, and fiery red!
 
 103
 7		40	1	0  Oak mallet
+4 //type tool
 2
 This is a large wooden mallet, with a 3-foot handle
 and a large wooden head about 6 inches in diameter.
 
 12
 8		20	1	0  Leather bag
+5 //type bag
 1
 This large leather bag looks like it would hold a lot.
 
 13
 9		11	2	1001	Brass key	// Potions storeroom
+5 //type key
 2
 This is a small brass key with some discoloration,
 As if some strong chemicals have spilled on it.
 
 108
 10		12	2	1002	Golden key // Treasure room
+5 //type key
 1
 This beautifully filigreed golden key has "TS" inscribed on it.
 
 22
 11		10	1	1003	Ivory key // TS to PE
+5 //type key
 2
 This key is made of finely carved ivory.
 It looks like it took a long time to make.
