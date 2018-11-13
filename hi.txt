@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 WOOT WOOT TEST TEST
+=======
+HI
+HI AGAIN
+
+>>>>>>> origin/master
