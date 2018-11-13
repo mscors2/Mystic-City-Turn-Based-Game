@@ -172,29 +172,30 @@ Not all who wander are lost, but this one is.
 
 
 ARTIFACTS	14	// Semi-random artifacts - New ones at the beginning.
-//TYPES: 0 - container, 1 wand, 2 book, 3 treasure
+//TYPES: 0 container, 1 wand, 2 book, 3 treasure, 4 tool, 5 bag, 6 key, 7 potion
 
 -42
-21	20	10	0	Hitchiker's Guide 
 2 //type book
+21	20	10	0	Hitchiker's Guide 
 2
 The Hitchiker's Guide appears as a small leather-bound book,
 with images of stars and planets on the cover.
 
 -3
-22	100	20	0	Pot O Gold
 0 //type container
+22	100	20	0	Pot O Gold
 1
 This pot o' gold is filled with shiny gold coins.
 
 0
+3 // treasure
 23	10	1	0	Four-Leaf Clover
 1
 This four-leaf clover has been gold plated, to form a beautiful pendant.
 
 23
-1		1000	-1  0	Jewel-encrusted chest	// Too heavy to move!
 0 //container type
+1		1000	-1  0	Jewel-encrusted chest	// Too heavy to move!
 4
 The chest is about two feet by 3 feet by 2 feet high.
 It appears to be made of solid gold, encrusted with 
@@ -202,12 +203,14 @@ diamonds, emeralds, rubies, and sapphires.
 It is also locked, and too heavy to move.
 
 23
+3 // treasure
 2		100	 1  0  Golden chalice
 2
 The chalice is about 6 inches high, with a 
 finely detailed design in white and yellow gold.
 
 11
+7 //potion
 3		100	 1	0  Purple potion
 3
 The potion is in a small stoppered glass bottle.
@@ -215,52 +218,52 @@ The purple fluid swirls and shimmers invitingly.
 There seems to be one good dose in the bottle.
 
 101
-4		50	1	0  Holly wand
 1 //artifact type wand
+4		50	1	0  Holly wand
 1
 This wand is light and delicate, fashioned of holly wood.
 
 11
-5		50	1	0  Parchment scroll
 2 //type book
+5		50	1	0  Parchment scroll
 1
 The scroll just says "XYZZY"
 
 105
-6		100	1	0  Sparkling rubies
 3 //type treasure
+6		100	1	0  Sparkling rubies
 1
 The rubies are bright, shiny, and fiery red!
 
 103
-7		40	1	0  Oak mallet
 4 //type tool
+7		40	1	0  Oak mallet
 2
 This is a large wooden mallet, with a 3-foot handle
 and a large wooden head about 6 inches in diameter.
 
 12
-8		20	1	0  Leather bag
 5 //type bag
+8		20	1	0  Leather bag
 1
 This large leather bag looks like it would hold a lot.
 
 13
+6 //type key
 9		11	2	1001	Brass key	// Potions storeroom
-5 //type key
 2
 This is a small brass key with some discoloration,
 As if some strong chemicals have spilled on it.
 
 108
+6 //type key
 10		12	2	1002	Golden key // Treasure room
-5 //type key
 1
 This beautifully filigreed golden key has "TS" inscribed on it.
 
 22
+6 //type key
 11		10	1	1003	Ivory key // TS to PE
-5 //type key
 2
 This key is made of finely carved ivory.
 It looks like it took a long time to make.
