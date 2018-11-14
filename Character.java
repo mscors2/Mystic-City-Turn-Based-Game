@@ -508,4 +508,12 @@ public class Character
 	{
 		return type;
 	}
+	
+	/*
+	 * ADDED: supports special Places
+	 */
+	public void setPlace(Place p)
+	{
+		current = p;
+	}
 }
