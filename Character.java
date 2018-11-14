@@ -222,6 +222,7 @@ public class Character
 				Player p = new Player(ID, name, description, type, current);
 				Game.addCharacter(ID, p);
 				current.addCharacter(p);
+				Game.nPlayers++;
 			}
 			else if (type.equalsIgnoreCase("JOKER"))
 			{
@@ -518,5 +519,20 @@ public class Character
 	public void setPlace(Place p)
 	{
 		current = p;
+	}
+	
+	public void kill()
+	{
+		isAlive = false;
+	}
+	
+	public void resurrect()
+	{
+		isAlive = true;
+	}
+	
+	public boolean isAlive()
+	{
+		return isAlive;
 	}
 }
