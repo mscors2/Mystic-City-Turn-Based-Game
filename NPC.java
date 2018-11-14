@@ -34,6 +34,10 @@ public class NPC extends Character
 		this.display();
 		System.out.println();
 		
+		// Did Place kill us?
+		if (!isAlive)
+			return;
+		
 		// Our DecisionMaker is AI
 		AI ai = new AI();
 		Move move = ai.getMove(this, current);

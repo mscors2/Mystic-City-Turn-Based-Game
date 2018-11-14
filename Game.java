@@ -136,7 +136,7 @@ public class Game
 					// Give the user some time to read the logs
 					try 
 					{
-						TimeUnit.SECONDS.sleep((long) 4.5);
+						TimeUnit.SECONDS.sleep((long) 2.5);
 					} 
 					catch (InterruptedException e) 
 					{
