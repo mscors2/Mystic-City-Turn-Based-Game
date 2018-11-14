@@ -74,7 +74,7 @@ public class SpecialAI implements DecisionMaker
 	{
 		if (type.equalsIgnoreCase("JOKER"))
 		{
-			Move.MoveType[] arr = new Move.MoveType[0];
+			Move.MoveType[] arr = new Move.MoveType[1];
 			arr[0] = Move.MoveType.GET;
 			return arr;
 		}
