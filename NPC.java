@@ -36,7 +36,10 @@ public class NPC extends Character
 		
 		// Did Place kill us?
 		if (!isAlive)
+		{
+			System.out.println(name + " is dead! \n");
 			return;
+		}
 		
 		// Our DecisionMaker is AI
 		AI ai = new AI();

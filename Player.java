@@ -35,7 +35,11 @@ public class Player extends Character
 		
 		// did the Place kill us?
 		if (!isAlive)
+		{
+			System.out.println(name + " is dead! \n");
 			return;
+		}
+
 		
 		UI ui = new UI();
 		Move move = ui.getMove(this, current);
