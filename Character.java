@@ -502,6 +502,9 @@ public class Character
 	 */
 	public void addArtifact(Artifact a)
 	{
+		if (a == null)
+			return;
+		
 		artifacts.add(a);
 	}
 	
@@ -534,5 +537,13 @@ public class Character
 	public boolean isAlive()
 	{
 		return isAlive;
+	}
+	
+	public Artifact loseArtifact()
+	{
+		if (artifacts.size() > 1)
+			return artifacts.remove(0);
+		else
+			return null;
 	}
 }

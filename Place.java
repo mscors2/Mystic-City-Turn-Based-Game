@@ -292,6 +292,17 @@ public class Place {
 		return allArtifacts.get(new Random().nextInt(allArtifacts.size())).name();
 	}
 
-
+	public Character getRandomCharacter(Character exception)
+	{
+		ArrayList<Character> copy = new ArrayList<Character>();
+		for (Character c : allCharacters)
+			if (!c.match(exception))
+				copy.add(c);
+		
+		if (copy.size() < 1)
+			return null;
+		
+		return copy.get(new Random().nextInt(copy.size()));
+	}
 
 }

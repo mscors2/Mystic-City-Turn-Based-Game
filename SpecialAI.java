@@ -74,9 +74,18 @@ public class SpecialAI implements DecisionMaker
 	{
 		if (character.type.equalsIgnoreCase("JOKER"))
 		{
+			// JOKERS will try to take items from nearby Characters in addition
+			Character victim = character.current.getRandomCharacter(character);
+			if (victim != null)
+			{
+				System.out.println("*" + character.name() + " is stealing from " + victim.name() + "!!!* \n");
+				character.addArtifact(victim.loseArtifact());
+			}
+					
 			// Jokers can only hoard artifacts
-			Move.MoveType[] arr = new Move.MoveType[1];
+			Move.MoveType[] arr = new Move.MoveType[2];
 			arr[0] = Move.MoveType.GET;
+			arr[1] = Move.MoveType.GO;
 			return arr;
 		}
 		else if (character.type.equalsIgnoreCase("WIZARD"))
