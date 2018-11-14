@@ -109,7 +109,7 @@ public class SpecialAI implements DecisionMaker
 			
 			// Kill
 			Character victim = character.current.getRandomCharacter(character);
-			if (victim != null)
+			if (victim != null && victim.isAlive())
 			{
 				System.out.println("*Oh no! " + victim.name() + " was slain by " + character.name() + "!* \n");
 				victim.kill();

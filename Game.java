@@ -151,6 +151,17 @@ public class Game
 					System.out.println(c.name() + " is dead! \n");
 					System.out.println("Retrieving next hero...\n");
 					System.out.println("//------------------------------------------------------------------------// \n");
+					
+					// Give the user some time to read the logs
+					try 
+					{
+						TimeUnit.SECONDS.sleep((long) 2.0);
+					} 
+					catch (InterruptedException e) 
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 				// Is everyone dead?
