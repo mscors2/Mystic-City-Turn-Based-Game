@@ -156,12 +156,13 @@ PLAYER
 Zaphod Beeblebrox is the President of the Universe
 He has 2 heads and 3 arms, and likes to have a good time.
 
-NPC		
-13		// An Ogre for the Ogre's Lair
-2		The Ugly Green Ogre
-2
-The Ugly Green Ogre is huge, green, slimy, and ill-tempered.
-He can't stand up in a normal room, which has lead to a permanent slouch.
+WIZARD		
+11		// A Wizard for the Potions Storeroom
+2		The Mindbender
+3
+This is a powerful and ancient wizard from times before Gandalf.
+Do not be surprised if he randomly teleports beside you.
+He also loves to train his mind with any Artifacts he can find.
 
 NPC		
 0		//  Where oh where can the Leprechaun be ?

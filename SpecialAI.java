@@ -18,7 +18,7 @@ public class SpecialAI implements DecisionMaker
 	public Move getMove(Character character, Place place) 
 	{	
 		// Generate special cases for Special NPCs
-		Move.MoveType[] options = getOptions(character.type());
+		Move.MoveType[] options = getOptions(character);
 		
 		// AI implementations will decide for NPC's only
 		// ***BANNED MOVES: LOOK, QUIT, EXIT, INVENTORY*** 
@@ -70,12 +70,28 @@ public class SpecialAI implements DecisionMaker
 		return move;
 	}
 	
-	private Move.MoveType[] getOptions(String type)
+	private Move.MoveType[] getOptions(Character character)
 	{
-		if (type.equalsIgnoreCase("JOKER"))
+		if (character.type.equalsIgnoreCase("JOKER"))
 		{
+			// Jokers can only hoard artifacts
 			Move.MoveType[] arr = new Move.MoveType[1];
 			arr[0] = Move.MoveType.GET;
+			return arr;
+		}
+		else if (character.type.equalsIgnoreCase("WIZARD"))
+		{
+			// WIZARDS will TELEPORT between rooms in addition to their move
+			
+			// Teleport
+			character.current = Place.getRandomPlace();
+			System.out.println("*Woosh! " + character.name + " teleported!*");
+			
+			// Wizards can only interact with Artifacts
+			Move.MoveType[] arr = new Move.MoveType[3];
+			arr[0] = Move.MoveType.GET;
+			arr[1] = Move.MoveType.USE;
+			arr[2] = Move.MoveType.DROP;
 			return arr;
 		}
 		else

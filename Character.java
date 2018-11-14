@@ -226,6 +226,12 @@ public class Character
 				Game.addCharacter(ID, j);
 				current.addCharacter(j);
 			}
+			else if (type.equalsIgnoreCase("WIZARD"))
+			{
+				Wizard w = new Wizard(ID, name, description, type, current);
+				Game.addCharacter(ID, w);
+				current.addCharacter(w);
+			}
 			else
 			{
 				// Default to NPC
