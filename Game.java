@@ -147,6 +147,11 @@ public class Game
 				else
 				{
 					count++;
+					
+					c.makeMove();
+					System.out.println("This character is dead! \n");
+					System.out.println("Retrieving next hero...\n");
+					System.out.println("//------------------------------------------------------------------------// \n");
 				}
 				
 				// Is everyone dead?
@@ -170,5 +175,14 @@ public class Game
 	public static void addCharacter(int ID, Character character)
 	{
 		characters.put(ID, character);
+	}
+	
+	public static Character getRandomCharacter()
+	{
+		if (characters.size() < 1)
+			return null;
+		
+		Object[] keys = characters.keySet().toArray();
+		return characters.get(keys[new Random().nextInt(keys.length)]);
 	}
 }

@@ -210,7 +210,7 @@ public class Place {
 
     public void display()
     {
-        System.out.println("Curernt Place: " + name);
+        System.out.println("Current Place: " + name);
         System.out.println(description);
 
         if(allArtifacts.size() == 0)
