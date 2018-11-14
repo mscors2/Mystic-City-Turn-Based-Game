@@ -21,6 +21,8 @@ public class Character
 	protected Place current;				// Reference
 	protected Vector<Artifact> artifacts; 	// Reference
 	
+	protected boolean isAlive;
+	
 	/* ----------------------------------------------------------------------------------------------------------- */
 	/* Constructors */
 	
@@ -52,6 +54,7 @@ public class Character
 		this.current = current;
 		this.artifacts = new Vector<Artifact>();
 		
+		isAlive = true;
 	}
 	
 	public Character(Scanner sc, double version)
@@ -266,7 +269,7 @@ public class Character
 	 * Switch statements will handle and execute the appropriate move
 	 */
 	public void makeMove(Move move)
-	{			
+	{					
 		// Switch move
 		boolean hasMoved = false;
 		while (!hasMoved)

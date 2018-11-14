@@ -211,11 +211,11 @@ public class Place {
     public void display()
     {
         System.out.println("Curernt Place: " + name);
-        System.out.println(description + "\n");
+        System.out.println(description);
 
         if(allArtifacts.size() == 0)
         {
-            System.out.println("No Artifacts here");
+            System.out.println("[ No Artifacts here ] \n");
         }
 
 
@@ -223,11 +223,10 @@ public class Place {
             System.out.println("All Artifacts:");
             String allNames = "";
 
-            for(int j = 0; j < allArtifacts.size() ; j++) //hw2
-            {
-                System.out.println(allArtifacts.get(j).name());
-            }
-
+            for (Artifact i : allArtifacts)
+            	allNames += i.name() + ", ";
+            allNames = allNames.substring(0, allNames.length() - 2);
+            System.out.println("[ " + allNames + " ] \n");
           }
     }
 
