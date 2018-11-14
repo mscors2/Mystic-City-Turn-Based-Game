@@ -140,7 +140,14 @@ DIRECTIONS 35	//Thirty five directions defined ( No number 15 )
 
 // CHARACTERS section is new, and has not been tested
 
-CHARACTERS 4	// Really should have more, but let's start with two of each.
+CHARACTERS 5	// Really should have more, but let's start with two of each.
+
+Joker
+12
+14    The Bagger
+2
+This thief is a menace who loves to cause mischief.
+Beware when he passes - he'll hoard all the items he can.
 
 PLAYER 		 
 12		// A player in the Entrance Hall, where expected
