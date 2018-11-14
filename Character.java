@@ -236,6 +236,12 @@ public class Character
 				Game.addCharacter(ID, w);
 				current.addCharacter(w);
 			}
+			else if (type.equalsIgnoreCase("KILLER"))
+			{
+				Killer k = new Killer(ID, name, description, type, current);
+				Game.addCharacter(ID, k);
+				current.addCharacter(k);
+			}
 			else
 			{
 				// Default to NPC

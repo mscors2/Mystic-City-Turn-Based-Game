@@ -103,6 +103,23 @@ public class SpecialAI implements DecisionMaker
 			arr[2] = Move.MoveType.DROP;
 			return arr;
 		}
+		else if (character.type.equalsIgnoreCase("KILLER"))
+		{
+			// KILLERS will try to murder nearby characters in addition to their move
+			
+			// Kill
+			Character victim = character.current.getRandomCharacter(character);
+			if (victim != null)
+			{
+				System.out.println("*Oh no! " + victim.name() + " was slain by " + character.name() + "!* \n");
+				victim.kill();
+			}
+			
+			// Killers can only move from place to place
+			Move.MoveType[] arr = new Move.MoveType[1];
+			arr[0] = Move.MoveType.GO;
+			return arr;
+		}
 		else
 		{
 			return Move.getAIMoves();

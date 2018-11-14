@@ -148,8 +148,7 @@ public class Game
 				{
 					count++;
 					
-					c.makeMove();
-					System.out.println("This character is dead! \n");
+					System.out.println(c.name() + " is dead! \n");
 					System.out.println("Retrieving next hero...\n");
 					System.out.println("//------------------------------------------------------------------------// \n");
 				}
