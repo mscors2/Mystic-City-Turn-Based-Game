@@ -282,7 +282,20 @@ This beautifully filigreed golden key has "TS" inscribed on it.
 This key is made of finely carved ivory.
 It looks like it took a long time to make.
 
+11
+7 //potion
+12		100	 1	0  Blue potion
+3
+The potion is in a small stoppered glass bottle.
+The blue fluid swirls and shimmers invitingly.
+There seems to be one good dose in the bottle.
 
+12
+8 //Food
+13	5	1	0	Bread
+2
+This bread looks somewhat appetizing.
+It will slightly regain your health
 
 
 
