@@ -44,7 +44,7 @@ The Direction Class was basically left unchanged.
 
 Jack Delaney
 jdelan7
-SECTION Character
+SECTION Character, AI, UI
 
 Extensions:
 	+ Killer.java
@@ -64,8 +64,14 @@ SpecialAI.java: This was a more enhanced AI/desicionMaker that would restrict sp
 		
 //--------------------------------------------------------------------------------------//
 		
+Michael Scorsolini
+mscors2
+Sections Character, Artifact, Move
 
+All the extensions I made are as follows: Artifacts that have types (this is several java files like Food, Container, etc) and their uses have different features that override the parent class, some artifacts can only be used by certain commands ex: food must be eaten, some artifacts and commands can only be used in certain places like mixing can only be done in the potion store room, wands can only be waved at the pool of enchantment. 
 
+With the artifacts having unique features I had to add several things to the character class to implement those features. These include: carrying capacity, use of bags to gain more capacity, use potions to raise max health, food to restore health, how to detect when a character should die and be removed from the game, Attack power which is raised by using wands. Also added potion mixing that creates a poison potion that kills the player if used. If a player dies I made sure their loot was dropped before removing them from the game
 
+Extra commands that were added with move class include ATTACK which attacks all players in the room and subtracts their health based on damage, MIX for mixing potions in the potions lab, EAT for eating food to restore health, READ for reading books/scrolls. Again only certain commands can be used for certain artifacts and I have built in error checking for that.
 
-
+Game ends if there is only one player standing as for the data file test2.gdf. This must be used in order to implement the extra features because we had to modify this file in order to implement them. Some additional items were added to each section in this update as well.
