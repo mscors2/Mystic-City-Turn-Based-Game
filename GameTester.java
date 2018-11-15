@@ -15,8 +15,9 @@ public class GameTester
 	public static void main(String[] args)
 	{
 		// Print the basics
-		System.out.println("Names: Jack Delaney, Vanson Ho, Michael Scorsolini");
-		System.out.println();
+		System.out.println("Members: Vanson Ho, Jack Delaney, Michael Scorsolini \n"
+				+ "Group #: 12 \n"
+				+ "Proj #: 4 \n");
 		
 		// first handle argument input
 		nPlayers = -999;
