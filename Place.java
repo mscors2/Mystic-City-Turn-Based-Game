@@ -119,6 +119,12 @@ public class Place {
 
     public void addArtifact(Artifact x)  //adds artifact
     {
+    	// Avoid duplicates
+    	for (Artifact i : allArtifacts)
+    		if (i.match(x))
+    			return;
+    	
+    	
         allArtifacts.add(x);
     }
 
