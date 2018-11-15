@@ -795,8 +795,14 @@ public class Character
 	 */
 	public void addArtifact(Artifact a)
 	{
+		// sometimes bad input
 		if (a == null)
 			return;
+
+		// no duplicates allowed
+		for (Artifact i : artifacts)
+			if (i.match(a))
+				return;
 		
 		artifacts.add(a);
 	}

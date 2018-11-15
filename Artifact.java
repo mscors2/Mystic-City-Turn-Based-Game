@@ -158,7 +158,7 @@ public class Artifact {
 			arr = line.split("\\s+");
 			
 			// Error check
-			if (arr.length != 1)
+			if (arr.length < 1)
 			{
 				System.err.println("GDF->error: \n"
 						+ "Artifact should only have one string in the first line \n");
