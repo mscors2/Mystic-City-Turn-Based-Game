@@ -27,7 +27,7 @@ public class Portal extends Place {
     public void display()
     {
         List<Integer> keyList = new ArrayList<Integer>(Place.allPlacesHM.keySet());
-
+        System.out.println("yoo");
         if(allCharacters.size() > 0)
         {
             for(Character i : allCharacters)
@@ -36,12 +36,12 @@ public class Portal extends Place {
                 if(!(i.type().equalsIgnoreCase("Player")))
                 {
                     i.setPlace(Place.getPlaceByID(keyList.get(keyList.size() - 1)));
-                    System.out.println("Moving " + i.name() + Place.getPlaceByID(keyList.get(keyList.size() - 1)).name());
+                    System.out.println("Moving BOT " + i.name() + Place.getPlaceByID(keyList.get(keyList.size() - 1)).name());
 
                 }
                 else
                 {
-                    System.out.println("Welcome to the special portal!");
+                    System.out.println("Welcome to the special portal " + name + "!");
                     System.out.println("These are your room options: \n\n");
 
                     for(int x = 0 ; x < keyList.size(); x++)
