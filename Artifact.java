@@ -9,6 +9,17 @@ public class Artifact {
 	private int keyPattern;
 	private int ArtifactType;
 
+	public Artifact(int id, String name, int value, int weight, String desc, int keyPat, int type)
+	{
+		ID = id;
+		this.name = name;
+		this.val = value;
+		this.mobility = weight;
+		this.description = desc;
+		this.keyPattern = keyPat;
+		this.ArtifactType = type;
+	}
+	
 	public Artifact(Scanner sc, int typeGiven, int placeID)
 	{
 		//This is for assigning types of artifacts
@@ -56,13 +67,7 @@ public class Artifact {
 			this.description += CleanLineScanner.getCleanLine(sc);
 		this.description = this.description.trim();
 		
-		// Assign the correct Place
-		if (placeID < 0)
-			Game.getCharacterByID(Math.abs(placeID)).addArtifact(this);
-		else if (placeID == 0)
-			Place.getRandomPlace().addArtifact(this);
-		else
-			Place.getPlaceByID(placeID).addArtifact(this);
+		
 		
 	}
 	
@@ -140,6 +145,7 @@ public class Artifact {
 				Place.getPlaceByID(Math.abs(placeID)).addArtifact(this);
 			else
 				Game.getCharacterByID(0).addArtifact(this);
+				
 		}
 		else if (version == 4.0 || version == 5.0)
 		{
@@ -217,7 +223,8 @@ public class Artifact {
 			// PlaceID ->	0 is for Player's inventory 
 			line = CleanLineScanner.getCleanLine(sc);
 			arr = line.split("\\s+");
-						
+			
+			
 			// Error check
 			if (arr.length != 1)
 			{
@@ -246,6 +253,7 @@ public class Artifact {
 			}			
 			
 			//assess the type of Artifact given and call 
+			
 			int typeGiven = Integer.parseInt(arr[0]);
 			if(typeGiven == 0)
 			{
@@ -253,7 +261,10 @@ public class Artifact {
 				Container c = new Container(sc, placeID);
 				
 				if (placeID < 0)
+				{
 					Game.getCharacterByID(Math.abs(placeID)).addArtifact(c);
+					Game.getCharacterByID(Math.abs(placeID)).currCap = Game.getCharacterByID(Math.abs(placeID)).currCap + c.getMobility();
+				}
 				else if (placeID == 0)
 					Place.getRandomPlace().addArtifact(c);
 				else
@@ -265,7 +276,10 @@ public class Artifact {
 				Wand w = new Wand(sc, placeID);
 				
 				if (placeID < 0)
+				{
 					Game.getCharacterByID(Math.abs(placeID)).addArtifact(w);
+					Game.getCharacterByID(Math.abs(placeID)).currCap = Game.getCharacterByID(Math.abs(placeID)).currCap + w.getMobility();
+				}
 				else if (placeID == 0)
 					Place.getRandomPlace().addArtifact(w);
 				else
@@ -277,7 +291,10 @@ public class Artifact {
 				Book b = new Book(sc, placeID);
 				
 				if (placeID < 0)
+				{
 					Game.getCharacterByID(Math.abs(placeID)).addArtifact(b);
+					Game.getCharacterByID(Math.abs(placeID)).currCap = Game.getCharacterByID(Math.abs(placeID)).currCap + b.getMobility();
+				}
 				else if (placeID == 0)
 					Place.getRandomPlace().addArtifact(b);
 				else
@@ -289,7 +306,10 @@ public class Artifact {
 				Treasure tr = new Treasure(sc, placeID);
 				
 				if (placeID < 0)
+				{
 					Game.getCharacterByID(Math.abs(placeID)).addArtifact(tr);
+					Game.getCharacterByID(Math.abs(placeID)).currCap = Game.getCharacterByID(Math.abs(placeID)).currCap + tr.getMobility();
+				}
 				else if (placeID == 0)
 					Place.getRandomPlace().addArtifact(tr);
 				else
@@ -302,7 +322,10 @@ public class Artifact {
 				Tool t = new Tool(sc, placeID);
 				
 				if (placeID < 0)
+				{
 					Game.getCharacterByID(Math.abs(placeID)).addArtifact(t);
+					Game.getCharacterByID(Math.abs(placeID)).currCap = Game.getCharacterByID(Math.abs(placeID)).currCap + t.getMobility();
+				}
 				else if (placeID == 0)
 					Place.getRandomPlace().addArtifact(t);
 				else
@@ -315,7 +338,10 @@ public class Artifact {
 				Bag bg = new Bag(sc, placeID);
 				
 				if (placeID < 0)
+				{
 					Game.getCharacterByID(Math.abs(placeID)).addArtifact(bg);
+					Game.getCharacterByID(Math.abs(placeID)).currCap = Game.getCharacterByID(Math.abs(placeID)).currCap + bg.getMobility();
+				}
 				else if (placeID == 0)
 					Place.getRandomPlace().addArtifact(bg);
 				else
@@ -327,11 +353,15 @@ public class Artifact {
 				Key k = new Key(sc, placeID);
 				
 				if (placeID < 0)
+				{
 					Game.getCharacterByID(Math.abs(placeID)).addArtifact(k);
+					Game.getCharacterByID(Math.abs(placeID)).currCap = Game.getCharacterByID(Math.abs(placeID)).currCap + k.getMobility();
+				}
 				else if (placeID == 0)
 					Place.getRandomPlace().addArtifact(k);
 				else
 					Place.getPlaceByID(placeID).addArtifact(k);
+					
 			}
 			else if(typeGiven == 7)
 			{
@@ -339,13 +369,30 @@ public class Artifact {
 				Potion p = new Potion(sc, placeID);
 				
 				if (placeID < 0)
+				{
 					Game.getCharacterByID(Math.abs(placeID)).addArtifact(p);
+					Game.getCharacterByID(Math.abs(placeID)).currCap = Game.getCharacterByID(Math.abs(placeID)).currCap + p.getMobility();
+				}
 				else if (placeID == 0)
 					Place.getRandomPlace().addArtifact(p);
 				else
 					Place.getPlaceByID(placeID).addArtifact(p);
 			}
-
+			else if(typeGiven == 8)
+			{
+				//potion
+				Food f = new Food(sc, placeID);
+				
+				if (placeID < 0)
+				{
+					Game.getCharacterByID(Math.abs(placeID)).addArtifact(f);
+					Game.getCharacterByID(Math.abs(placeID)).currCap = Game.getCharacterByID(Math.abs(placeID)).currCap + f.getMobility();
+				}
+				else if (placeID == 0)
+					Place.getRandomPlace().addArtifact(f);
+				else
+					Place.getPlaceByID(placeID).addArtifact(f);
+			}
 			
 			
 			
@@ -378,6 +425,11 @@ public class Artifact {
 		System.out.println("Key Pattern: " + keyPattern);
 	}
 	
+	public boolean isMasterKey()
+	{
+		return keyPattern < 0;
+	}
+	
 	public String name()
 	{
 		return name;
@@ -390,7 +442,18 @@ public class Artifact {
 	
 	public void use(Character c)
 	{
+		//this should get overriden but if it doesnt, this is default
 		
+		if (this.isKey())
+		{
+			c.current.useKey(this);
+		}
+		else
+		{
+			System.out.println("You have used: " + this.name);
+			//remove from inventory
+			c.removeArtByID(this.getID());
+		}
 	}
 	
 	public String getDesc()
@@ -401,5 +464,22 @@ public class Artifact {
 	public int getID()
 	{
 		return this.ID;
+	}
+	
+	public int getTypeID()
+	{
+		return ArtifactType;
+	}
+	
+	public int getMobility()
+	{
+		return this.mobility;
+	}
+	
+	public void increaseCapacity(Character c)
+	{
+		c.CarryCap = c.CarryCap + 20;
+		System.out.println("CARRR: " + c.CarryCap);
+		System.out.println("Your carry capacity was increased by 20!");
 	}
 }

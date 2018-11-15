@@ -48,12 +48,8 @@ public class Character
 		current = Place.getPlaceByID(1);
 		artifacts = new Vector<Artifact>();
 		
-<<<<<<< HEAD
 		CarryCap = 25; //amount of weight a character can hold
 		currCap = 0;
-=======
-		isAlive = true;
->>>>>>> bb31e939a57ff794fdabb040dcaac2c952a0c8bc
 	}
 
 	public Character(int ID, String name, String description, String type, Place current)

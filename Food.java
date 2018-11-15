@@ -11,10 +11,17 @@ public class Food extends Artifact {
 	public void use(Character c)
 	{
 		//check if health is full
-		//only give health up to capacity
-		
+		 if(c.isHealthFull())
+		 {
+			 //health is full
+			 System.out.println("Your Health is already full. Cannot restore past capacity!");
+			 return;
+		 }
+		 
 		//consume food and recharge health
 		//remove from inventory
-		
+		c.restoreHealth();
+		 
+		c.removeArtByID(this.getID());
 	}
 }

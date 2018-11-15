@@ -47,6 +47,15 @@ public class UI implements DecisionMaker
 				type = Move.MoveType.USE;
 			else if (arr[0].equalsIgnoreCase("PASS"))
 				type = Move.MoveType.PASS;
+			else if(arr[0].equalsIgnoreCase("READ"))
+				type = Move.MoveType.READ;
+			else if(arr[0].equalsIgnoreCase("EAT"))
+				type = Move.MoveType.EAT;
+			else if(arr[0].equalsIgnoreCase("MIX"))
+				type = Move.MoveType.MIX;
+			else if(arr[0].equalsIgnoreCase("ATTACK"))
+				type = Move.MoveType.ATTACK;
+			
 			else
 			{
 				// invalid user command, try again
@@ -58,7 +67,12 @@ public class UI implements DecisionMaker
 						+ " -> GET <artifact_name> \n"
 						+ " -> DROP <artifact_name> \n"
 						+ " -> USE <artifact_name> \n"
-						+ " -> PASS (skip a turn!) \n");
+						+ " -> PASS (skip a turn!) \n"
+						+ " -> READ <artifact_name> \n"
+						+ " -> EAT <artifact_name> \n"
+						+ " -> MIX <potion_name1> <potion_name2> \n"
+						+ " -> ATTACK ");
+					
 				
 				// keep looping
 				continue;

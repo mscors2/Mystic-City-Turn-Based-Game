@@ -11,6 +11,7 @@ public class Treasure extends Artifact {
 	@Override
 	public void use(Character c)
 	{
+		System.out.println("You can't use treasure! You should collect as much as possible!");
 		
 	}
 }

@@ -11,6 +11,8 @@ public class Tool extends Artifact {
 	@Override
 	public void use(Character c)
 	{
-		
+		//tools break after use will be implemented for buliding possibly later on
+		System.out.println("You broke the " + this.name() + "!");
+		c.removeArtByID(this.getID());
 	}
 }
