@@ -527,7 +527,9 @@ public class Character
 	 */
 	public void setPlace(Place p)
 	{
+		current.removeCharacter(this);
 		current = p;
+		current.addCharacter(this);
 	}
 	
 	public void kill()

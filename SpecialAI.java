@@ -93,7 +93,7 @@ public class SpecialAI implements DecisionMaker
 			// WIZARDS will TELEPORT between rooms in addition to their move
 			
 			// Teleport
-			character.current = Place.getRandomPlace();
+			character.setPlace(Place.getRandomPlace());
 			System.out.println("*Woosh! " + character.name + " teleported!*");
 			
 			// Wizards can only interact with Artifacts
