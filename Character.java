@@ -21,6 +21,8 @@ public class Character
 	protected Place current;				// Reference
 	protected Vector<Artifact> artifacts; 	// Reference
 	
+	protected boolean isAlive;
+	
 	/* ----------------------------------------------------------------------------------------------------------- */
 	/* Constructors */
 	
@@ -52,6 +54,7 @@ public class Character
 		this.current = current;
 		this.artifacts = new Vector<Artifact>();
 		
+		isAlive = true;
 	}
 	
 	public Character(Scanner sc, double version)
@@ -219,13 +222,33 @@ public class Character
 				Player p = new Player(ID, name, description, type, current);
 				Game.addCharacter(ID, p);
 				current.addCharacter(p);
+				Game.nPlayers++;
+			}
+			else if (type.equalsIgnoreCase("JOKER"))
+			{
+				Joker j = new Joker(ID, name, description, type, current);
+				Game.addCharacter(ID, j);
+				current.addCharacter(j);
+			}
+			else if (type.equalsIgnoreCase("WIZARD"))
+			{
+				Wizard w = new Wizard(ID, name, description, type, current);
+				Game.addCharacter(ID, w);
+				current.addCharacter(w);
+			}
+			else if (type.equalsIgnoreCase("KILLER"))
+			{
+				Killer k = new Killer(ID, name, description, type, current);
+				Game.addCharacter(ID, k);
+				current.addCharacter(k);
 			}
 			else
 			{
+				// Default to NPC
 				NPC npc = new NPC(ID, name, description, type, current);
 				Game.addCharacter(ID, npc);
 				current.addCharacter(npc);
-			}	
+			}
 		}
 		else
 		{
@@ -253,7 +276,7 @@ public class Character
 	 * Switch statements will handle and execute the appropriate move
 	 */
 	public void makeMove(Move move)
-	{			
+	{					
 		// Switch move
 		boolean hasMoved = false;
 		while (!hasMoved)
@@ -485,6 +508,50 @@ public class Character
 	 */
 	public void addArtifact(Artifact a)
 	{
+		if (a == null)
+			return;
+		
 		artifacts.add(a);
+	}
+	
+	/*
+	 * ADDED: Type getter method
+	 */
+	public String type()
+	{
+		return type;
+	}
+	
+	/*
+	 * ADDED: supports special Places
+	 */
+	public void setPlace(Place p)
+	{
+		current.removeCharacter(this);
+		current = p;
+		current.addCharacter(this);
+	}
+	
+	public void kill()
+	{
+		isAlive = false;
+	}
+	
+	public void resurrect()
+	{
+		isAlive = true;
+	}
+	
+	public boolean isAlive()
+	{
+		return isAlive;
+	}
+	
+	public Artifact loseArtifact()
+	{
+		if (artifacts.size() > 1)
+			return artifacts.remove(0);
+		else
+			return null;
 	}
 }

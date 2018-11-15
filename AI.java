@@ -19,7 +19,7 @@ public class AI implements DecisionMaker
 	{	
 		// AI implementations will decide for NPC's only
 		// ***BANNED MOVES: LOOK, QUIT, EXIT, INVENTORY*** 
-		Move.MoveType[] options = Move.getAIMoves();	// TODO
+		Move.MoveType[] options = Move.getAIMoves();
 		Move.MoveType type = options[new Random().nextInt(options.length)];
 		String argument = "";
 		

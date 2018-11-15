@@ -7,44 +7,38 @@ import java.util.Scanner;
  * ProjecT: Term Project Part IV
  */
 
-public class Player extends Character
+public class Killer extends NPC
 {
 	/* ----------------------------------------------------------------------------------------------------------- */
 	/* Constructors */
-	public Player(Scanner sc, double version)
+	public Killer(Scanner sc, double version)
 	{
 		super(sc, version);
 	}
 	
-	public Player(int ID, String name, String description, String type, Place current)
+	public Killer(int ID, String name, String description, String type, Place current)
 	{
-		// Character building from version 4.0 and up only
 		super(ID, name, description, type, current);
 	}
-
+	
+	/* ----------------------------------------------------------------------------------------------------------- */
+	/* Main Methods */
 	
 	/*
-	 * override makeMove()
+	 * Override makeMove()
 	 */
 	public void makeMove()
-	{		
-		// display basic Character/Place information
+	{
+		// Display basic Character/Place information
 		current.display();
 		this.display();
 		System.out.println();
 		
-		// did the Place kill us?
-		if (!isAlive)
-		{
-			System.out.println(name + " is dead! \n");
-			return;
-		}
-
+		// Our DecisionMaker is AI
+		SpecialAI sai = new SpecialAI();
+		Move move = sai.getMove(this, current);
 		
-		UI ui = new UI();
-		Move move = ui.getMove(this, current);
-		
-		// execute the move
+		// Execute the decision
 		makeMove(move);
 	}
 }

@@ -16,6 +16,8 @@ public class Game
 	private double version;		// ADDED, for some reason this isn't in the rubric
 	public static HashMap<Integer, Character> characters;	// reference
 	
+	public static int nPlayers;
+	
 	/* ----------------------------------------------------------------------------------------------------------- */
 	/* Constructors */
 	public Game()
@@ -47,6 +49,7 @@ public class Game
 			name += arr[i] + " ";
 		name = name.trim();
 		characters = new HashMap<Integer, Character>();
+		nPlayers = 0;
 		
 		// First initialize all collections
 		Place.allPlacesHM = new HashMap<Integer, Place>();
@@ -115,26 +118,61 @@ public class Game
 	/* Main Methods */
 	public void play()
 	{
-		while (true)
+		boolean playing = true;
+		while (playing)
 		{
+			int count = 0;
 			for (Integer key : characters.keySet())
 			{
 				Character c = characters.get(key);
-				c.makeMove();
-				System.out.println("//------------------------------------------------------------------------// \n");
 				
-				// Give the user some time to read the logs
-				try 
+				// Are they playable?
+				if (c.isAlive())
 				{
-					TimeUnit.SECONDS.sleep((long) 4.5);
-				} 
-				catch (InterruptedException e) 
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					c.makeMove();
+					System.out.println("Retrieving next hero...\n");
+					System.out.println("//------------------------------------------------------------------------// \n");
+					
+					// Give the user some time to read the logs
+					try 
+					{
+						TimeUnit.SECONDS.sleep((long) 2.5);
+					} 
+					catch (InterruptedException e) 
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
+				else
+				{
+					count++;
+					
+					System.out.println(c.name() + " is dead! \n");
+					System.out.println("Retrieving next hero...\n");
+					System.out.println("//------------------------------------------------------------------------// \n");
+					
+					// Give the user some time to read the logs
+					try 
+					{
+						TimeUnit.SECONDS.sleep((long) 2.0);
+					} 
+					catch (InterruptedException e) 
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+				// Is everyone dead?
+				if (count == Game.nPlayers)
+					playing = false;
 			}
 		}
+		
+		// Quit game
+		System.out.println("**GAME OVER! Everyone is dead!*");
+		System.exit(0);
 	}
 
 	/* ----------------------------------------------------------------------------------------------------------- */
@@ -147,5 +185,14 @@ public class Game
 	public static void addCharacter(int ID, Character character)
 	{
 		characters.put(ID, character);
+	}
+	
+	public static Character getRandomCharacter()
+	{
+		if (characters.size() < 1)
+			return null;
+		
+		Object[] keys = characters.keySet().toArray();
+		return characters.get(keys[new Random().nextInt(keys.length)]);
 	}
 }

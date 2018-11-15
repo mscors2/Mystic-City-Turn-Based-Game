@@ -23,7 +23,7 @@ public class Move
 	 */
 	public enum MoveType
 	{
-		QUIT, LOOK, INVENTORY, GO, GET, DROP, USE, PASS;
+		QUIT, LOOK, INVENTORY, GO, GET, DROP, USE, PASS, MIX, ATTACK , READ, EAT;
 	}
 	
 	/*
@@ -45,7 +45,7 @@ public class Move
 	public static MoveType[] getAIMoves() 
 	{
 		// Set up and fill array
-		MoveType[] arr = {MoveType.GO, MoveType.GET, MoveType.DROP, MoveType.USE, MoveType.PASS};
+		MoveType[] arr = {MoveType.GO, MoveType.GET, MoveType.DROP, MoveType.USE, MoveType.PASS, MoveType.MIX, MoveType.ATTACK, MoveType.READ, MoveType.EAT};
 		return arr;
 	}
 }

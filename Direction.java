@@ -59,7 +59,7 @@ public class Direction {
 			this.from = Place.getPlaceByID(Math.abs(Integer.parseInt(arr[1])));
 			this.to = Place.getPlaceByID(Math.abs(Integer.parseInt(arr[3])));
 			this.dir = DirType.valueOf(arr[2]);
-			this.lock = Integer.parseInt(arr[3]) < 0;
+			this.lock = Integer.parseInt(arr[3]) <= 0;
 			this.lockPattern = Integer.parseInt(arr[4]);
 			
 			// Add our instance to corresponding collections
