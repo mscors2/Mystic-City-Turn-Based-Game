@@ -41,6 +41,8 @@ public class Character
 		// TODO
 		current = Place.getPlaceByID(1);
 		artifacts = new Vector<Artifact>();
+		
+		isAlive = true;
 	}
 
 	public Character(int ID, String name, String description, String type, Place current)
