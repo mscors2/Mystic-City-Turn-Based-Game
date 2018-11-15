@@ -35,8 +35,8 @@ public class Portal extends Place {
 
                 if(!(i.type().equalsIgnoreCase("Player")))
                 {
-                    i.setPlace(Place.getPlaceByID(keyList.get(keyList.size() - 1)));
-                    System.out.println("Moving BOT " + i.name() + Place.getPlaceByID(keyList.get(keyList.size() - 1)).name());
+                    i.setPlace(Place.getPlaceByID(23));
+                    System.out.println("Moving BOT " + i.name() + Place.getPlaceByID(23).name());
 
                 }
                 else
@@ -61,13 +61,16 @@ public class Portal extends Place {
                             i.setPlace(Place.getPlaceByID(keyList.get(j)));
                             System.out.println("Success!! Moving " + i.name() + " to "
                                                 + Place.getPlaceByID(keyList.get(j)).name());
+                            i.current.display();
                             return;
                         }
                     }
 
                     System.out.println("You didn't enter a valid room!");
-                    i.setPlace(Place.getPlaceByID(keyList.get(keyList.size() - 1)));
-                    System.out.println("Moving " + i.name() + " to " +  Place.getPlaceByID(keyList.get(keyList.size() - 1)).name());
+                    i.setPlace(Place.getPlaceByID(keyList.get(keyList.size() - 2)));
+                    System.out.println("Moving " + i.name() + " to " +  Place.getPlaceByID(keyList.get(keyList.size() - 2)).name());
+                    i.current.display();
+                    return;
 
 
                 }

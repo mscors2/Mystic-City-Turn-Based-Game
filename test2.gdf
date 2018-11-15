@@ -1,6 +1,6 @@
 GDF 5.1 Mystic City	- Populated! // Magic word, version number, and Environment name.
 
-PLACES 15	// Fourteen Places in this file
+PLACES 16	// Fourteen Places in this file
 // In this test file, the first 6 room numbers are chosen in an X-Y fashion
 // The tens digit indicates the column and the units digit indicates the row
 
@@ -44,6 +44,14 @@ There is a door to the east, and a stairway leading up.
 //You need to travel through and back in order to get to the stage 2 of the game,
 //This is why these rooms are in the shape of the number 2
 
+321 Secret Portal
+1
+This is a secret portal that teleports you to any room
+
+543 RockPaperScissorsRoom
+1
+Do you wanna play a game?
+
 101	Room 101		//C1
 2
 This is room 101 of the catacombs
@@ -85,13 +93,10 @@ There are doors to the north, south, and east-southeast
 This is room 108 of the catacombs
 There are doors to the east and west-northwest
 
-321 Secret Portal
-1
-This is a secret portal that teleports you to any room
 
 
 
-DIRECTIONS 36	//Thirty five directions defined ( No number 15 )
+DIRECTIONS 39	//Thirty five directions defined ( No number 15 )
 
 //Direction numbers are chosen arbitrarily from top to bottom and left to right
 
@@ -143,6 +148,9 @@ DIRECTIONS 36	//Thirty five directions defined ( No number 15 )
 35	107	S	0	0	// C7 to nowhere, locked
 36	106	NW	11	0	// C6 to PS, shortcut
 37	12	U	321	0	// entrance hall to portal
+38	12	NNW	543	0	// entrance hall to RPS room
+39	543	ESE	12	0	// RPS to entrance
+40	543	SSE	13	0	// RPS to Ogre's Lair
 
 // CHARACTERS section is new, and has not been tested
 

@@ -12,7 +12,7 @@ In the Place class we added a few methods:
 	-We add implementation of two descendents.  I chose to go out of the box with the places
 Portal Class
 - This class is sort of a secret room.  It is located when someone is in the entrance hall(for easier testing purposes) and enters "go up".  This place allows give you a list of all available places and lets you choose where you want to go by entering the name.
-- If a bot is sent to this place, it is sent to the second to the last place when ordered by the hashmap .  I put the hashmap into a key set in order to get change the location.
+- If a bot is sent to this place, it is sent to the treasure store room .  I put the hashmap into a key set in order to get change the location.
 - If a player enters the name incorrectly, it gets sent where the bot is sent.  This is not the best implementation right now but this depends greatly on the gdf file.
 RockPaperScissors Class
 - Extends from the Place class

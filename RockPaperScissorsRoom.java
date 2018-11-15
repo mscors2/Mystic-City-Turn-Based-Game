@@ -51,7 +51,7 @@ public class RockPaperScissorsRoom extends Place {
 
                     boolean liveOrDie = rockPaperScissors();  //true = live
 
-                    if(liveOrDie == true || liveOrDie == false)
+                    if(liveOrDie == true)
                     {
                         System.out.println("Anonymous voice:  You win this time... as a gift you get to go to the portal");
                         i.setPlace(getPlaceByID(321));
@@ -64,6 +64,7 @@ public class RockPaperScissorsRoom extends Place {
                         System.out.println("Anonymous voice:  YOU LOSE YOU DIE. BYE");
                         i.kill();
                         i.setPlace(getPlaceByID(0));
+                        return;
                     }
                 }
 
