@@ -14,11 +14,13 @@ public class Wand extends Artifact
 		Place p = c.current;
 		if(p.name().equals("Pool of Enchantment"))
 		{
-			//wave wand increase health
-			//create function in character class to increase health cap
+			//wave wand increase attack
+			c.incrAttack();
 			
-			//remove from inventory
-			//create a function to remove by id in character class
+			System.out.println("You increased your attack damage by 1! Too bad the wand disinegrated :( ");
+			//remove artifact from inventory
+			c.removeArtByID(this.getID());
+			
 			
 			
 		}
