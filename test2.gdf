@@ -193,8 +193,8 @@ He took a wrong turn somewhere, and now can't find the way out!
 Not all who wander are lost, but this one is.
 
 
-ARTIFACTS	14	// Semi-random artifacts - New ones at the beginning.
-//TYPES: 0 container, 1 wand, 2 book, 3 treasure, 4 tool, 5 bag, 6 key, 7 potion
+ARTIFACTS	17	// Semi-random artifacts - New ones at the beginning.
+//TYPES: 0 container, 1 wand, 2 book, 3 treasure, 4 tool, 5 bag, 6 key, 7 potion, 8 food
 
 -42
 2 //type book
@@ -204,7 +204,7 @@ The Hitchiker's Guide appears as a small leather-bound book,
 with images of stars and planets on the cover.
 
 -3
-0 //type container
+3 //type treasure
 22	100	20	0	Pot O Gold
 1
 This pot o' gold is filled with shiny gold coins.
@@ -231,7 +231,7 @@ It is also locked, and too heavy to move.
 The chalice is about 6 inches high, with a 
 finely detailed design in white and yellow gold.
 
-11
+21
 7 //potion
 3		100	 1	0  Purple potion
 3
@@ -290,7 +290,7 @@ This beautifully filigreed golden key has "TS" inscribed on it.
 This key is made of finely carved ivory.
 It looks like it took a long time to make.
 
-11
+21
 7 //potion
 12		100	 1	0  Blue potion
 3
@@ -299,18 +299,14 @@ The blue fluid swirls and shimmers invitingly.
 There seems to be one good dose in the bottle.
 
 12
-8 //Food
-13	5	1	0	Bread
+8	//Food
+13		5	1	0	Bread
 2
 This bread looks somewhat appetizing.
-It will slightly regain your health
+It will slightly regain your health.
 
 12
-6 // type key
-14	1000	1	-999	Master Key
+6	//type key
+14		1000	1	-999	Master Key
 1
-This key will unlock any door
-
-
-
-
+This key will unlock any door.

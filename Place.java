@@ -190,7 +190,20 @@ public class Place {
     public void useKey(Artifact x)  // uses key on all directions
     {
         for(int i = 0;i < allDirections.size(); i++) {
-            allDirections.get(i).useKey(x);
+        	if(x.isMasterKey())
+        	{
+        		//we have a master key unlock it
+        		if(allDirections.get(i).isLocked())
+        		{
+        			allDirections.get(i).unlock();
+        		}
+        	}
+        	else
+        	{
+        		//go through and check key patterns to unlock
+        		allDirections.get(i).useKey(x);
+        	}
+        		
         }
     }
 

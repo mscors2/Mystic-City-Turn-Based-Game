@@ -17,6 +17,7 @@ public class Game
 	public static HashMap<Integer, Character> characters;	// reference
 	
 	public static int nPlayers;
+	public static int nPlayersAlive;
 	
 	/* ----------------------------------------------------------------------------------------------------------- */
 	/* Constructors */
@@ -89,6 +90,7 @@ public class Game
 			
 			// Build all Characters
 			int nCharacters = Integer.parseInt(arr[1]);
+			nPlayersAlive = nCharacters;
 			for (int i = 0; i < nCharacters; i++)
 			{
 				// Don't use this - Character will add itself to the collections
@@ -107,6 +109,7 @@ public class Game
 		
 		// Build all Artifacts
 		int nArtifacts = Integer.parseInt(arr[1]);
+		System.out.println("NUM: " + nArtifacts);
 		for (int i = 0; i < nArtifacts; i++)
 		{
 			// Don't use this - Artifact will add itself to the collections
@@ -122,6 +125,10 @@ public class Game
 		while (playing)
 		{
 			int count = 0;
+			try
+			{
+				
+			
 			for (Integer key : characters.keySet())
 			{
 				Character c = characters.get(key);
@@ -165,8 +172,12 @@ public class Game
 				}
 				
 				// Is everyone dead?
-				if (count == Game.nPlayers)
+				if (nPlayersAlive <= 1)
 					playing = false;
+			}
+			}
+			catch(ConcurrentModificationException e){
+				//do nothing
 			}
 		}
 		
