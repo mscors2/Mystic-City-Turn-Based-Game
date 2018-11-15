@@ -170,11 +170,11 @@ This is a powerful and ancient wizard from times before Gandalf.
 Do not be surprised if he randomly teleports beside you.
 He also loves to train his mind with any Artifacts he can find.
 
-NPC		
-0		//  Where oh where can the Leprechaun be ?
-3		A Cheerful Leprechaun
+KILLER		
+12		//  Spawns with the players OH NO
+3		Death Himself
 1
-The Cheerful Leprechaun sings and dances about his pot o' gold !
+The dreaded and mysterious hooded figure holding a scythe
 
 PLAYER		
 0		// A player in a random spot?  Interesting!
