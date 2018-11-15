@@ -254,7 +254,7 @@ public class Place {
     	// TODO with Mike
         for(int i = 0; i < allArtifacts.size(); i++){
             if(allArtifacts.get(i).match(x))
-                return allArtifacts.get(i);
+                return allArtifacts.remove(i);
         }
 
         System.out.println("Not the right artifact");
