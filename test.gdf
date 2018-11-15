@@ -182,7 +182,7 @@ The Hitchiker's Guide appears as a small leather-bound book,
 with images of stars and planets on the cover.
 
 -3
-0 //type container
+3 //type treasure
 22	100	20	0	Pot O Gold
 1
 This pot o' gold is filled with shiny gold coins.
@@ -215,6 +215,14 @@ finely detailed design in white and yellow gold.
 3
 The potion is in a small stoppered glass bottle.
 The purple fluid swirls and shimmers invitingly.
+There seems to be one good dose in the bottle.
+
+13
+7 //potion
+12		100	1 0	Blue Potion
+3
+The potion is in a small stoppered glass bottle.
+The blue fluid swirls and shimmers invitingly.
 There seems to be one good dose in the bottle.
 
 101
@@ -267,6 +275,13 @@ This beautifully filigreed golden key has "TS" inscribed on it.
 2
 This key is made of finely carved ivory.
 It looks like it took a long time to make.
+
+12
+8 // type food
+13	5	1	0	Moldy Bread
+2
+This moldy bread does not look appetizing.
+It will only heal your health by 1.
 
 
 
