@@ -11,7 +11,6 @@ public class Container extends Artifact {
 	@Override
 	public void use(Character c)
 	{
-		//cant use containers to store things when in use
+		System.out.println("Container cannot be used");
 	}
-	
 }
