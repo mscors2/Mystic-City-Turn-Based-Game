@@ -146,7 +146,8 @@ public class Game
 				}
 				else
 				{
-					count++;
+					if (c.type().equalsIgnoreCase("PLAYER"))
+						count++;
 					
 					System.out.println(c.name() + " is dead! \n");
 					System.out.println("Retrieving next hero...\n");
