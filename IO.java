@@ -15,7 +15,6 @@ public class IO
 	public static final int GUI_2 = 2;
 	public static final int GUI_3 = 3;
 	private UserInterface implementor;
-	private static final IO singleton = new IO();	// ADDED to keep things consistent
 	
 	/* ----------------------------------------------------------------------------------------------------------- */
 	/* Constructors */
@@ -57,10 +56,5 @@ public class IO
 				System.err.println("selectInterface(int x) -> invalid x");
 				break;
 		}
-	}
-	
-	public static IO getInstance()
-	{
-		return singleton;
 	}
 }
