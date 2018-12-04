@@ -16,7 +16,6 @@ public class TextInterface implements UserInterface
 	
 	public String getLine()
 	{
-		System.out.print(">> ");
 		return new KeyboardScanner().getKeyboardScanner().next();
 	}
 }
