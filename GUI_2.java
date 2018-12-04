@@ -1,14 +1,21 @@
 /*
  * TODO: Vanson Ho
  */
-import javax.swing.*;
+import javaxswing.*;
 import java.util.*;
 
 public class GUI_2 implements UserInterface 
 {
+	private JFrame frame;
+
 	public void display(String str)
 	{
-		JFrame frame = new JFrame("GUI_FRAME");
+		if(frame != null)
+		{
+			setVisible(false);
+			dispose();
+		}
+		frame = new JFrame("GUI_FRAME");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JLabel label = new JLabel(str);
