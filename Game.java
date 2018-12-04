@@ -152,7 +152,7 @@ public class Game
 				else
 				{	
 					c.io.display(c.name() + " is dead! \n");
-					c.io.display("Retrieving next hero...\n");
+					c.io.display("Retriev  ing next hero...\n");
 					c.io.display("//------------------------------------------------------------------------// \n");
 					
 					// Give the user some time to read the logs

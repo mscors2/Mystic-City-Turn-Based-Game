@@ -18,13 +18,14 @@ public class RockPaperScissorsRoom extends Place {
 
         // Add our instance to the global collection
         allPlacesHM.put(this.ID, this);
-
     }
 
 
 
-    public void display()
+    public void display(IO io)
     {
+    	System.err.println("DEBUG \n");
+    	
         if(allCharacters.size() > 0) {
             for (Character i : allCharacters) {
 
@@ -51,7 +52,7 @@ public class RockPaperScissorsRoom extends Place {
                     {
                         i.io.display("Anonymous voice:  You win this time... as a gift you get to go to the portal");
                         i.setPlace(getPlaceByID(321));
-                        i.current.display();
+                        i.current.display(i.io);
                         return;
 
                     }

@@ -30,7 +30,7 @@ public class NPC extends Character
 	public void makeMove()
 	{
 		// Display basic Character/Place information
-		io.display(current.getDisplay());
+		current.display(io);
 		display();
 		io.display("");
 		

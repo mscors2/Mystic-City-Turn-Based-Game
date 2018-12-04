@@ -70,6 +70,11 @@ public class Place {
                 Portal thisPortal = new Portal(ID, name, description);
                 return;
             }
+            else if (ID == 543)
+            {
+            	RockPaperScissorsRoom thisRPS = new RockPaperScissorsRoom(ID, name, description);
+            	return;
+            }
         }
 
         // Remaining fields are initialized
@@ -227,24 +232,24 @@ public class Place {
         return this;
     }
 
-    public void display()
+    public void display(IO io)
     {
-        System.out.println("Current Place: " + name);
-        System.out.println(description);
+        io.display("Current Place: " + name);
+        io.display(description);
 
         if(allArtifacts.size() == 0)
         {
-            System.out.println("[ No Artifacts here ] \n");
+            io.display("[ No Artifacts here ] \n");
         }
         else
         {
-            System.out.println("All Artifacts:");
+            io.display("All Artifacts:");
             String allNames = "";
 
             for (Artifact i : allArtifacts)
             	allNames += i.name() + ", ";
             allNames = allNames.substring(0, allNames.length() - 2);
-            System.out.println("[ " + allNames + " ] \n");
+            io.display("[ " + allNames + " ] \n");
         }
     }
     

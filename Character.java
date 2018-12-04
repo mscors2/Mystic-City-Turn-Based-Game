@@ -310,7 +310,7 @@ public class Character
 	public void makeMove()
 	{
 		// Print current Place and Player information
-		io.display(current.getDisplay());
+		current.display(io);
 		display();
 	}
 	
@@ -330,7 +330,7 @@ public class Character
 				{
 					// Re-print the current Place information
 					io.display("*Really? Just look above this message... ugh okay...* \n");
-					io.display(current.getDisplay());
+					current.display(io);
 					break;
 				}
 				case QUIT:
@@ -592,7 +592,6 @@ public class Character
 							pCount++;
 						}
 						
-						io.display("\n>> ");
 						//get input
 						KeyboardScanner ksc = new KeyboardScanner();
 						Scanner sc = ksc.getKeyboardScanner();

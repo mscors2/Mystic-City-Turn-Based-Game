@@ -23,7 +23,7 @@ public class Portal extends Place {
     }
 
 
-    public void display()
+    public void display(IO io)
     {
         List<Integer> keyList = new ArrayList<Integer>(Place.allPlacesHM.keySet());
         if(allCharacters.size() > 0)
@@ -58,7 +58,7 @@ public class Portal extends Place {
                             i.setPlace(Place.getPlaceByID(keyList.get(j)));
                             i.io.display("Success!! Moving " + i.name() + " to "
                                                 + Place.getPlaceByID(keyList.get(j)).name());
-                            i.current.display();
+                            i.current.display(i.io);
                             return;
                         }
                     }
@@ -66,7 +66,7 @@ public class Portal extends Place {
                     i.io.display("You didn't enter a valid room!");
                     i.setPlace(Place.getPlaceByID(keyList.get(keyList.size() - 2)));
                     i.io.display("Moving " + i.name() + " to " +  Place.getPlaceByID(keyList.get(keyList.size() - 2)).name());
-                    i.current.display();
+                    i.current.display(i.io);
                     return;
 
 

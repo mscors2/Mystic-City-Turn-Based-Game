@@ -29,7 +29,7 @@ public class Player extends Character
 	public void makeMove()
 	{		
 		// display basic Character/Place information
-		io.display(current.getDisplay());
+		current.display(io);
 		display();
 		io.display("");
 		
