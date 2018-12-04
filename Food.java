@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 
 public class Food extends Artifact {
 	public Food(Scanner sc, int id)

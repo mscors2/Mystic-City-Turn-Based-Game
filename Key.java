@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 
 public class Key extends Artifact {
 	public Key(Scanner sc, int PlaceID)

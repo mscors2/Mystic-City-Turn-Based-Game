@@ -59,7 +59,7 @@ public class UI implements DecisionMaker
 			else
 			{
 				// invalid user command, try again
-				System.out.println("*An old and ancient voice fills your mind...* \n"
+				character.io.display("*An old and ancient voice fills your mind...* \n"
 						+ " -> QUIT or EXIT \n"
 						+ " -> LOOK \n"
 						+ " -> INVENTORY or INVE \n"

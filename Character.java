@@ -26,6 +26,7 @@ public class Character
 	protected int CarryCap;
 	protected int currCap;
 	protected boolean isAlive;
+	public IO io;
 	
 	/* ----------------------------------------------------------------------------------------------------------- */
 	/* Constructors */
@@ -50,6 +51,8 @@ public class Character
 		
 		CarryCap = 25; //amount of weight a character can hold
 		currCap = 0;
+		isAlive = true;
+		io = new IO();
 	}
 
 	public Character(int ID, String name, String description, String type, Place current)
@@ -68,6 +71,7 @@ public class Character
 		isAlive = true;
 		CarryCap = 25; //amount of weight a character can hold
 		currCap = 0;
+		io = new IO();
 	}
 	
 	public Character(Scanner sc, double version)
@@ -306,9 +310,8 @@ public class Character
 	public void makeMove()
 	{
 		// Print current Place and Player information
-		current.display();
-		this.display();
-		
+		io.display(current.getDisplay());
+		display();
 	}
 	
 	/*
@@ -326,14 +329,14 @@ public class Character
 				case LOOK:
 				{
 					// Re-print the current Place information
-					System.out.println("*Really? Just look above this message... ugh okay...* \n");
-					current.display();
+					io.display("*Really? Just look above this message... ugh okay...* \n");
+					io.display(current.getDisplay());
 					break;
 				}
 				case QUIT:
 				{
 					// Exit/Quit out of the entire game (lot of power for any Player)
-					System.out.println("*Well at least you tried, it's been fun! Try again sometime won't you?* \n");
+					io.display("*Well at least you tried, it's been fun! Try again sometime won't you?* \n");
 					System.exit(0);
 				}
 				case INVENTORY:
@@ -342,18 +345,18 @@ public class Character
 					if (artifacts.size() < 1)
 					{
 						// No Artifacts
-						System.out.println("*Your bag falls like a feather as you set it on the ground...* \n"
+						io.display("*Your bag falls like a feather as you set it on the ground...* \n"
 								+ "*There's nothing inside...* \n");
 					}
 					else
 					{
 						// Print all Artifacts
-						System.out.println("*You put you bag on the ground and look inside...*");
+						io.display("*You put you bag on the ground and look inside...*");
 						String allArtifacts = "";
 						for (Artifact x : artifacts)
 							allArtifacts += x.name() + ", ";
 						allArtifacts = allArtifacts.substring(0, allArtifacts.length() - 2);
-						System.out.println("[" + allArtifacts + "] \n");
+						io.display("[" + allArtifacts + "] \n");
 					}
 					break;
 				}
@@ -366,10 +369,11 @@ public class Character
 					// Invalid Direction?
 					if (result == current)
 					{
-						System.out.println("*Whoops! You can't go that way!* \n");
+						io.display("*Whoops! You can't go that way!* \n");
 					}
 					else
-					{					
+					{				
+						io.display("Following " + direction);
 						// Update our new Place to our current Place
 						current.removeCharacter(this);
 						result.addCharacter(this);
@@ -381,7 +385,7 @@ public class Character
 						// Check for the EXIT Place
 						if (current.match("EXIT"))
 						{
-							System.out.println("*CONGRATULATIONS! You beat the game!* \n");
+							io.display("*CONGRATULATIONS! You beat the game!* \n");
 							System.exit(0);
 						}
 					}
@@ -398,19 +402,19 @@ public class Character
 					// Invalid Artifact?
 					if (result == null)
 					{
-						System.out.println("*Sorry but the '" + move.argument() + "' doesn't exist here...* \n");
+						io.display("*Sorry but the '" + move.argument() + "' doesn't exist here...* \n");
 					}//check capacity
 					else if((this.currCap + result.getMobility()) > this.CarryCap)
 					{
-						System.out.println("You cant carry this item! You do not have enough capacity!");
+						io.display("You cant carry this item! You do not have enough capacity!");
 					}
 					else
 					{
 						// Update our current Place and our own collection of Artifacts
-						System.out.println("*Hooray! You've now got the '" + result.name() + "\n");
+						io.display("*Hooray! You've now got the '" + result.name() + "\n");
 						artifacts.add(result);
 						this.currCap = this.currCap + result.getMobility();
-						System.out.println("Current held weight increased to: " + this.currCap + "/" + this.CarryCap);
+						io.display("Current held weight increased to: " + this.currCap + "/" + this.CarryCap);
 						
 					}
 					break;
@@ -426,10 +430,10 @@ public class Character
 						if (x.match(move.argument()))
 						{
 							// We have it! Now update the current Place and our own collection of Artifacts
-							System.out.println("*You place the '" + x.name() + "' back on the floor* \n");
+							io.display("*You place the '" + x.name() + "' back on the floor* \n");
 							current.addArtifact(x);
 							this.currCap = this.currCap - x.getMobility();
-							System.out.println("Capcity reduced to: " + this.currCap + "/" + this.CarryCap);
+							io.display("Capcity reduced to: " + this.currCap + "/" + this.CarryCap);
 							artifacts.remove(x);
 							
 							break;
@@ -439,7 +443,7 @@ public class Character
 					
 					// Invalid Artifact name
 					if (count == size)
-						System.out.println("*Whoops you don't even have the '" + move.argument() + "'...* \n");
+						io.display("*Whoops you don't even have the '" + move.argument() + "'...* \n");
 					break;
 				}
 				case USE:
@@ -457,13 +461,13 @@ public class Character
 							{
 								//not food or Book
 								// We have it! Now use it on every possible Direction
-								System.out.println("You can't use food you must eat it!");
+								io.display("You can't use food you must eat it!");
 								break;
 								
 							}
 							else if(x.getTypeID() == 2)
 							{
-								System.out.println("You can't use a book/scroll you must read it!");
+								io.display("You can't use a book/scroll you must read it!");
 								break;
 							}
 							else if(x.getTypeID() == 7)
@@ -476,7 +480,7 @@ public class Character
 							else
 							{
 								// We have it! Now use it and let the child classes handle it
-								System.out.println("Trying to use artifact");
+								io.display("Trying to use artifact");
 								x.use(this);
 								//break;
 							}
@@ -486,13 +490,13 @@ public class Character
 					
 					// Invalid Artifact name
 					if (count == size)
-						System.out.println("*Slow down buddy we don't even have the '" + move.argument() + "'!* \n");
+						io.display("*Slow down buddy we don't even have the '" + move.argument() + "'!* \n");
 					break;
 				}
 				case PASS:
 				{
 					// Print a PASS message and move on
-					System.out.println("*Well aren't you a useful hero... NEXT!!!* \n");
+					io.display("*Well aren't you a useful hero... NEXT!!!* \n");
 					
 					// Valid move
 					hasMoved = true;
@@ -502,8 +506,6 @@ public class Character
 				case READ:
 				{
 					// Attempt to find the given Artifact name in our collection
-					int count = 0;
-					int size = artifacts.size();
 					for (Artifact x : artifacts)
 					{
 						//check if we have a match
@@ -517,12 +519,12 @@ public class Character
 							}
 							else if(x.getTypeID() == 8)
 							{
-								System.out.println("You can't read food, you must eat it!");
+								io.display("You can't read food, you must eat it!");
 								break;
 							}
 							else
 							{
-								System.out.println("You can't read this Artifact you must use it!");
+								io.display("You can't read this Artifact you must use it!");
 								break;
 							}
 						}
@@ -531,8 +533,6 @@ public class Character
 				case EAT:
 				{
 					// Attempt to find the given Artifact name in our collection
-					int count = 0;
-					int size = artifacts.size();
 					for (Artifact x : artifacts)
 					{
 						//check if we have a match
@@ -546,12 +546,12 @@ public class Character
 							}
 							else if(x.getTypeID() == 2)
 							{
-								System.out.println("You can't eat a book, you must read it!");
+								io.display("You can't eat a book, you must read it!");
 								break;
 							}
 							else
 							{
-								System.out.println("You can't eat this Artifact you must use it!");
+								io.display("You can't eat this Artifact you must use it!");
 								break;
 							}
 						}
@@ -577,21 +577,21 @@ public class Character
 						if(count < 2)
 						{
 							//player doesn't have two potions
-							System.out.println("You must have at least two potions to mix");
+							io.display("You must have at least two potions to mix");
 							break;
 						}
 						
 						//prompt player for two potions to be used
-						System.out.println("List of Potions you can mix: \n "
+						io.display("List of Potions you can mix: \n "
 										  +"(Enter the NUMBERS of both seperated by a comma ex: 1,2)\n\n");
 						int pCount = 0;
 						for(Artifact x: potionList)
 						{
-							System.out.println(pCount + ". " + x.name());
+							io.display(pCount + ". " + x.name());
 							pCount++;
 						}
 						
-						System.out.println("\n>> ");
+						io.display("\n>> ");
 						//get input
 						KeyboardScanner ksc = new KeyboardScanner();
 						Scanner sc = ksc.getKeyboardScanner();
@@ -600,7 +600,7 @@ public class Character
 						
 						if(arr.length < 2)
 						{
-							System.out.println("You must enter two potions");
+							io.display("You must enter two potions");
 							break;
 						}
 						
@@ -610,14 +610,14 @@ public class Character
 						|| Integer.parseInt(arr[1]) > pCount
 						|| Integer.parseInt(arr[1]) < 0)
 						{
-							System.out.println("Error: Input Given does not match bounds!");
+							io.display("Error: Input Given does not match bounds!");
 							break;
 						}
 						
 						//check if potion listed is the same
 						if(Integer.parseInt(arr[0]) == Integer.parseInt(arr[1]))
 						{
-							System.out.println("Error: you can't mix the same potion with itself");
+							io.display("Error: you can't mix the same potion with itself");
 							break;
 						}
 						
@@ -632,7 +632,7 @@ public class Character
 					}
 					else
 					{
-						System.out.println("You must be in the potions lab to mix potions");
+						io.display("You must be in the potions lab to mix potions");
 						break;
 					}
 				}
@@ -641,7 +641,7 @@ public class Character
 					//first check to see if there is more than one player in the room
 					if(this.current.allCharacters.size() > 1)
 					{
-						System.out.println(this.name() + " has attacked all characters in the room!");
+						io.display(this.name() + " has attacked all characters in the room!");
 						for(Character a: this.current.allCharacters)
 						{
 							if (a.name().equalsIgnoreCase(this.name()))
@@ -652,13 +652,13 @@ public class Character
 							{
 								//ATTACK
 								a.health = a.health - this.AttackDamage;
-								System.out.println(a.name() + " took damage! Health after attack: " + a.health + "/" + a.healthCap);
+								io.display(a.name() + " took damage! Health after attack: " + a.health + "/" + a.healthCap);
 								
 								//check if player died
 								if(a.health == 0 || a.health < 0)
 								{
 									a.isAlive = false;
-									System.out.println(a.name() + " has died after attack from " + this.name() + "!\n");
+									io.display(a.name() + " has died after attack from " + this.name() + "!\n");
 									//drop all loot from dead character and remove from game
 									for (Artifact s: a.artifacts)
 									{
@@ -683,7 +683,7 @@ public class Character
 					}
 					else
 					{
-						System.out.println("You attacked what seemed to a ghost of your imagination");
+						io.display("You attacked what seemed to a ghost of your imagination");
 						hasMoved = true;
 						break;
 					}
@@ -733,19 +733,19 @@ public class Character
 	 */
 	public void display()
 	{
-		System.out.println("*The '" + name + "' hero! (#" + String.format("%03d", ID) + ")* \n"
+		io.display("*The '" + name + "' hero! (#" + String.format("%03d", ID) + ")* \n"
 				+ description);
 		
-		System.out.println("\nCurrent Health: " + this.health + "/" + this.healthCap);
-		System.out.println("Current Attack Damage: " + this.AttackDamage);
-		System.out.println("Current Weight Held: " + this.currCap + "/" + this.CarryCap);
+		io.display("\nCurrent Health: " + this.health + "/" + this.healthCap);
+		io.display("Current Attack Damage: " + this.AttackDamage);
+		io.display("Current Weight Held: " + this.currCap + "/" + this.CarryCap);
 		
 		
-		System.out.println("Players alive in game: " + Game.nPlayersAlive);
+		io.display("Players alive in game: " + Game.nPlayersAlive);
 		
 		if(this.current.allCharacters.size() > 1)
 		{
-			System.out.println("\nOther characters in the room with you: ");
+			io.display("\nOther characters in the room with you: ");
 			for(Character c: this.current.allCharacters)
 			{
 				if(this.name.equals(c.name()))
@@ -753,9 +753,9 @@ public class Character
 					//do nothing
 				}
 				else
-					System.out.println(c.name());
+					io.display(c.name());
 			}
-			System.out.println("\n");
+			io.display("\n");
 		}
 	}
 	
@@ -855,9 +855,9 @@ public class Character
 	
 	public void incrHealthCap()
 	{
-		System.out.println("Your health capacity was increased by 2");
+		io.display("Your health capacity was increased by 2");
 		this.healthCap = this.healthCap + 2;
-		System.out.println("Health Capacity: " + this.healthCap);
+		io.display("Health Capacity: " + this.healthCap);
 	}
 	
 	public void restoreHealth()
@@ -873,7 +873,7 @@ public class Character
 			health = health + 2;
 		}
 		
-		System.out.println("Health restored to: " + this.health + "/" + this.healthCap);
+		io.display("Health restored to: " + this.health + "/" + this.healthCap);
 	}
 	
 	public boolean isHealthFull()

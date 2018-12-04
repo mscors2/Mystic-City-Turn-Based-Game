@@ -1,6 +1,5 @@
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.io.*;
 
 public class Book extends Artifact {
 
@@ -13,12 +12,12 @@ public class Book extends Artifact {
 	@Override
 	public void use(Character c)
 	{
-		System.out.println("You decided to read the artifact:");
+		c.io.display("You decided to read the artifact:");
 		//delay the game for reading
 		try 
 		{
 			TimeUnit.SECONDS.sleep((long) 3);
-			System.out.println("The Artifact reads: " + this.getDesc());
+			c.io.display("The Artifact reads: " + this.getDesc());
 			return;
 		} 
 		catch (InterruptedException e) 

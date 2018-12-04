@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -27,8 +26,6 @@ public class RockPaperScissorsRoom extends Place {
 
     public void display()
     {
-        List<Integer> keyList = new ArrayList<Integer>(Place.allPlacesHM.keySet());
-
         if(allCharacters.size() > 0) {
             for (Character i : allCharacters) {
 
@@ -40,20 +37,20 @@ public class RockPaperScissorsRoom extends Place {
 
                 else
                 {
-                    System.out.println(i.name() + " has entered the room");
-                    System.out.println("... \n...");
+                    i.io.display(i.name() + " has entered the room");
+                    i.io.display("... \n...");
 
-                    System.out.println("Anonymous voice:  Do you wanna play a game?");
+                    i.io.display("Anonymous voice:  Do you wanna play a game?");
 
-                    System.out.println("Anonymous voice:  Lets play Rock Paper Scissors, you win, you get to live" +
+                    i.io.display("Anonymous voice:  Lets play Rock Paper Scissors, you win, you get to live" +
                                        " another day ");
-                    System.out.println("Anonymous voice:  You Lose, you DIE.  Choose wisely :)");
+                    i.io.display("Anonymous voice:  You Lose, you DIE.  Choose wisely :)");
 
-                    boolean liveOrDie = rockPaperScissors();  //true = live
+                    boolean liveOrDie = rockPaperScissors(i);  //true = live
 
                     if(liveOrDie == true)
                     {
-                        System.out.println("Anonymous voice:  You win this time... as a gift you get to go to the portal");
+                        i.io.display("Anonymous voice:  You win this time... as a gift you get to go to the portal");
                         i.setPlace(getPlaceByID(321));
                         i.current.display();
                         return;
@@ -61,7 +58,7 @@ public class RockPaperScissorsRoom extends Place {
                     }
                     else
                     {
-                        System.out.println("Anonymous voice:  YOU LOSE YOU DIE. BYE");
+                        i.io.display("Anonymous voice:  YOU LOSE YOU DIE. BYE");
                         i.kill();
                         i.setPlace(getPlaceByID(0));
                         return;
@@ -77,9 +74,9 @@ public class RockPaperScissorsRoom extends Place {
     }
 
     //plays RPS
-    public boolean rockPaperScissors()
+    public boolean rockPaperScissors(Character i)
     {
-        Scanner input = new Scanner(System.in);
+        Scanner input = new KeyboardScanner().getKeyboardScanner();
 
         Random rand =  new Random();
 
@@ -87,7 +84,7 @@ public class RockPaperScissorsRoom extends Place {
         int userRPS = 0;
         boolean userWon = false;
 
-        System.out.println("Please choose Rock, Paper or Scissors");
+        i.io.display("Please choose Rock, Paper or Scissors");
         String myInput = input.nextLine();
 
         if(myInput.equalsIgnoreCase("rock"))
@@ -98,8 +95,8 @@ public class RockPaperScissorsRoom extends Place {
             userRPS = 3;
         else
         {
-            System.out.println("Learn to spell N0Ob.  Try again");
-            rockPaperScissors();  //  recursion!
+            i.io.display("Learn to spell N0Ob.  Try again");
+            rockPaperScissors(i);  //  recursion!
         }
 
         // user is rock
@@ -107,17 +104,17 @@ public class RockPaperScissorsRoom extends Place {
         {
             if(randRPS == 1)
             {
-                System.out.println("Anonymous voice:   I chose Rock! Tie! Lets play again!");
-                rockPaperScissors();
+                i.io.display("Anonymous voice:   I chose Rock! Tie! Lets play again!");
+                rockPaperScissors(i);
             }
             if(randRPS == 2)
             {
-                System.out.println("Anonymous voice:    I choose Paper!");
+                i.io.display("Anonymous voice:    I choose Paper!");
                 userWon = false;
             }
             if(randRPS == 3)
             {
-                System.out.println("Anonymous voice:   I choose Scissors!");
+                i.io.display("Anonymous voice:   I choose Scissors!");
                 userWon = true;
             }
         }
@@ -127,17 +124,17 @@ public class RockPaperScissorsRoom extends Place {
         {
             if(randRPS == 2)
             {
-                System.out.println("Anonymous voice:   I choose Paper! Tie! Lets play again!");
-                rockPaperScissors();
+                i.io.display("Anonymous voice:   I choose Paper! Tie! Lets play again!");
+                rockPaperScissors(i);
             }
             if(randRPS == 1)
             {
-                System.out.println("Anonymous voice:   I choose Scissors!");
+                i.io.display("Anonymous voice:   I choose Scissors!");
                 userWon = false;
             }
             if(randRPS == 3)
             {
-                System.out.println("Anonymous voice:  I choose Rock!");
+                i.io.display("Anonymous voice:  I choose Rock!");
                 userWon = true;
             }
         }
@@ -147,17 +144,17 @@ public class RockPaperScissorsRoom extends Place {
         {
             if(randRPS == 3)
             {
-                System.out.println("Anonymous voice:   I choose Scissors! Tie! Lets play again!");
-                rockPaperScissors();
+                i.io.display("Anonymous voice:   I choose Scissors! Tie! Lets play again!");
+                rockPaperScissors(i);
             }
             if(randRPS == 1)
             {
-                System.out.println("Anonymous voice:   I choose Rock!");
+                i.io.display("Anonymous voice:   I choose Rock!");
                 userWon = false;
             }
             if(randRPS == 2)
             {
-                System.out.println("Anonymous voice:  I choose Paper!");
+                i.io.display("Anonymous voice:  I choose Paper!");
                 userWon = true;
             }
         }

@@ -30,14 +30,14 @@ public class NPC extends Character
 	public void makeMove()
 	{
 		// Display basic Character/Place information
-		current.display();
-		this.display();
-		System.out.println();
+		io.display(current.getDisplay());
+		display();
+		io.display("");
 		
 		// Did Place kill us?
 		if (!isAlive)
 		{
-			System.out.println(name + " is dead! \n");
+			io.display(name + " is dead! \n");
 			return;
 		}
 		

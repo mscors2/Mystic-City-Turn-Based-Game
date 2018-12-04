@@ -124,7 +124,6 @@ public class Game
 		boolean playing = true;
 		while (playing)
 		{
-			int count = 0;
 			try
 			{
 				
@@ -152,10 +151,7 @@ public class Game
 					}
 				}
 				else
-				{
-					if (c.type().equalsIgnoreCase("PLAYER"))
-						count++;
-					
+				{	
 					System.out.println(c.name() + " is dead! \n");
 					System.out.println("Retrieving next hero...\n");
 					System.out.println("//------------------------------------------------------------------------// \n");

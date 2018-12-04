@@ -30,9 +30,9 @@ public class Wizard extends NPC
 	public void makeMove()
 	{
 		// Display basic Character/Place information
-		current.display();
-		this.display();
-		System.out.println();
+		io.display(current.getDisplay());
+		display();
+		io.display("");
 		
 		// Our DecisionMaker is AI
 		SpecialAI sai = new SpecialAI();

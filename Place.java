@@ -176,7 +176,7 @@ public class Place {
             }
         }
 
-        System.out.println("Character not in this place!");
+        System.err.println("Character not in this place!");
         return;
     }
 
@@ -223,7 +223,7 @@ public class Place {
             }
 
         }
-        System.out.println("ERROR: " + direction + " is invalid direction.");
+        System.err.println("ERROR: " + direction + " is invalid direction.");
         return this;
     }
 
@@ -236,9 +236,8 @@ public class Place {
         {
             System.out.println("[ No Artifacts here ] \n");
         }
-
-
-        else{
+        else
+        {
             System.out.println("All Artifacts:");
             String allNames = "";
 
@@ -246,7 +245,29 @@ public class Place {
             	allNames += i.name() + ", ";
             allNames = allNames.substring(0, allNames.length() - 2);
             System.out.println("[ " + allNames + " ] \n");
+        }
+    }
+    
+    public String getDisplay()
+    {
+    	String str = "Current Place: " + name + "\n"
+    			+ description + "\n";
+        if(allArtifacts.size() == 0)
+        {
+            str += "[ No Artifacts here ] \n";
+        }
+        else
+        {
+            str += "All Artifacts:\n";
+            String allNames = "";
+
+            for (Artifact i : allArtifacts)
+            	allNames += i.name() + ", ";
+            allNames = allNames.substring(0, allNames.length() - 2);
+            str += "[ " + allNames + " ] \n";
           }
+        
+        return str;
     }
 
     public Artifact getArtifact(String x)
@@ -257,7 +278,6 @@ public class Place {
                 return allArtifacts.remove(i);
         }
 
-        System.out.println("Not the right artifact");
         return null;
     }
 

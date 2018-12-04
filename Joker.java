@@ -30,8 +30,8 @@ public class Joker extends NPC
 	public void makeMove()
 	{
 		// Display basic Character/Place information
-		current.display();
-		this.display();
+		io.display(current.getDisplay());;
+		display();
 		System.out.println();
 		
 		// Our DecisionMaker is AI

@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 
 public class Potion extends Artifact {
 	public Potion(Scanner sc, int PlaceID)
@@ -20,7 +19,7 @@ public class Potion extends Artifact {
 		//check to see if its a deadly potion used
 		if(this.name().equals("POISON"))
 		{
-			System.out.println("YOU DRANK THE POISON!!! You died.");
+			c.io.display("YOU DRANK THE POISON!!! You died.");
 			//kill off player
 			c.health = 0;
 			c.isAlive = false;
@@ -54,12 +53,12 @@ public class Potion extends Artifact {
 			//combine this object with another potion
 			// return result
 			Potion MIXED = new Potion(-9999, "POISON", 3, 1, "This will kill you if you drink it.", 0);
-			System.out.println("You just made poison out of the potions. Do not use it.");
+			c.io.display("You just made poison out of the potions. Do not use it.");
 			return MIXED;
 		}
 		else 
 		{
-			System.out.println("You must be in the potions room in order to mix potions");
+			c.io.display("You must be in the potions room in order to mix potions");
 			return null;
 		}
 	}

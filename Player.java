@@ -29,14 +29,14 @@ public class Player extends Character
 	public void makeMove()
 	{		
 		// display basic Character/Place information
-		current.display();
-		this.display();
-		System.out.println();
+		io.display(current.getDisplay());
+		display();
+		io.display("");
 		
 		// did the Place kill us?
 		if (!isAlive)
 		{
-			System.out.println(name + " is dead! \n");
+			io.display(name + " is dead! \n");
 			return;
 		}
 

@@ -18,7 +18,7 @@ public class IO
 	
 	/* ----------------------------------------------------------------------------------------------------------- */
 	/* Constructors */
-	private IO()
+	public IO()
 	{
 		// default
 		selectInterface(0);

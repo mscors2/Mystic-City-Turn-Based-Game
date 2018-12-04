@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 
 public class Wand extends Artifact
 {
@@ -17,7 +16,7 @@ public class Wand extends Artifact
 			//wave wand increase attack
 			c.incrAttack();
 			
-			System.out.println("You increased your attack damage by 1! Too bad the wand disinegrated :( ");
+			c.io.display("You increased your attack damage by 1! Too bad the wand disinegrated :( ");
 			//remove artifact from inventory
 			c.removeArtByID(this.getID());
 			
@@ -26,7 +25,7 @@ public class Wand extends Artifact
 		}
 		else
 		{
-			System.out.println("ERROR: Player must be in the\nPool of Enchantment room to wave wand");
+			c.io.display("ERROR: Player must be in the\nPool of Enchantment room to wave wand");
 			return;
 		}
 		

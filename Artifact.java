@@ -8,6 +8,7 @@ public class Artifact {
 	private int mobility;
 	private int keyPattern;
 	private int ArtifactType;
+	private final IO io = new IO();
 
 	public Artifact(int id, String name, int value, int weight, String desc, int keyPat, int type)
 	{
@@ -417,12 +418,13 @@ public class Artifact {
 	}
 		
 	public void print() {
-		System.out.println("ID: " + ID);
-		System.out.println("Name: " + name);
-		System.out.println("Description: " + description);
-		System.out.println("Weight: " + mobility);
-		System.out.println("Value: " + val);
-		System.out.println("Key Pattern: " + keyPattern);
+		String str = "ID: " + ID + "\n"
+				+ "Name: " + name + "\n"
+				+ "Description: " + description + "\n"
+				+ "Weight: " + mobility + "\n"
+				+ "Value: " + val + "\n"
+				+ "Key Pattern: " + keyPattern;
+		io.display(str);
 	}
 	
 	public boolean isMasterKey()
@@ -450,7 +452,7 @@ public class Artifact {
 		}
 		else
 		{
-			System.out.println("You have used: " + this.name);
+			io.display("You have used: " + this.name);
 			//remove from inventory
 			c.removeArtByID(this.getID());
 		}
@@ -479,7 +481,8 @@ public class Artifact {
 	public void increaseCapacity(Character c)
 	{
 		c.CarryCap = c.CarryCap + 20;
-		System.out.println("CARRR: " + c.CarryCap);
-		System.out.println("Your carry capacity was increased by 20!");
+		String str = "CARRR: " + c.CarryCap + "\n"
+				+ "Your carry capacity was increased by 20!";
+		io.display(str);
 	}
 }

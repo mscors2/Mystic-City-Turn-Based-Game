@@ -27,7 +27,6 @@ public class Portal extends Place {
     public void display()
     {
         List<Integer> keyList = new ArrayList<Integer>(Place.allPlacesHM.keySet());
-        System.out.println("yoo");
         if(allCharacters.size() > 0)
         {
             for(Character i : allCharacters)
@@ -36,22 +35,22 @@ public class Portal extends Place {
                 if(!(i.type().equalsIgnoreCase("Player")))
                 {
                     i.setPlace(Place.getPlaceByID(23));
-                    System.out.println("Moving BOT " + i.name() + Place.getPlaceByID(23).name());
+                    i.io.display("Moving BOT " + i.name() + Place.getPlaceByID(23).name());
 
                 }
                 else
                 {
-                    System.out.println("Welcome to the special portal " + name + "!");
-                    System.out.println("These are your room options: \n\n");
+                    i.io.display("Welcome to the special portal " + name + "!");
+                    i.io.display("These are your room options: \n\n");
 
                     for(int x = 0 ; x < keyList.size(); x++)
                     {
-                        System.out.println("Name: " + Place.getPlaceByID(keyList.get(x)).name());
+                        i.io.display("Name: " + Place.getPlaceByID(keyList.get(x)).name());
                     }
 
-                    System.out.println("Please enter a room name to teleport to:");
+                    i.io.display("Please enter a room name to teleport to:");
 
-                    Scanner input = new Scanner(System.in);
+                    Scanner input = new KeyboardScanner().getKeyboardScanner();
                     String myInput = input.nextLine();
 
                     for(int j = 0; j < keyList.size(); j++)
@@ -59,22 +58,22 @@ public class Portal extends Place {
                         if(myInput.equalsIgnoreCase(Place.getPlaceByID(keyList.get(j)).name()))
                         {
                             i.setPlace(Place.getPlaceByID(keyList.get(j)));
-                            System.out.println("Success!! Moving " + i.name() + " to "
+                            i.io.display("Success!! Moving " + i.name() + " to "
                                                 + Place.getPlaceByID(keyList.get(j)).name());
                             i.current.display();
                             return;
                         }
                     }
 
-                    System.out.println("You didn't enter a valid room!");
+                    i.io.display("You didn't enter a valid room!");
                     i.setPlace(Place.getPlaceByID(keyList.get(keyList.size() - 2)));
-                    System.out.println("Moving " + i.name() + " to " +  Place.getPlaceByID(keyList.get(keyList.size() - 2)).name());
+                    i.io.display("Moving " + i.name() + " to " +  Place.getPlaceByID(keyList.get(keyList.size() - 2)).name());
                     i.current.display();
                     return;
 
 
                 }
-                System.out.println("***Continue Move***");
+                i.io.display("***Continue Move***");
             }
         }
     }

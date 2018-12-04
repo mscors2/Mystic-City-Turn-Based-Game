@@ -78,7 +78,7 @@ public class SpecialAI implements DecisionMaker
 			Character victim = character.current.getRandomCharacter(character);
 			if (victim != null)
 			{
-				System.out.println("*" + character.name() + " is stealing from " + victim.name() + "!!!* \n");
+				character.io.display("*" + character.name() + " is stealing from " + victim.name() + "!!!* \n");
 				character.addArtifact(victim.loseArtifact());
 			}
 					
@@ -94,7 +94,7 @@ public class SpecialAI implements DecisionMaker
 			
 			// Teleport
 			character.setPlace(Place.getRandomPlace());
-			System.out.println("*Woosh! " + character.name + " teleported!*");
+			character.io.display("*Woosh! " + character.name + " teleported!*");
 			
 			// Wizards can only interact with Artifacts
 			Move.MoveType[] arr = new Move.MoveType[3];
@@ -111,7 +111,7 @@ public class SpecialAI implements DecisionMaker
 			Character victim = character.current.getRandomCharacter(character);
 			if (victim != null && victim.isAlive())
 			{
-				System.out.println("*Oh no! " + victim.name() + " was slain by " + character.name() + "!* \n");
+				character.io.display("*Oh no! " + victim.name() + " was slain by " + character.name() + "!* \n");
 				victim.kill();
 			}
 			
