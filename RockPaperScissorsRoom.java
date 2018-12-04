@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * Created by Vanson on 11/14/2018.
@@ -76,8 +75,6 @@ public class RockPaperScissorsRoom extends Place {
     //plays RPS
     public boolean rockPaperScissors(Character i)
     {
-        Scanner input = new KeyboardScanner().getKeyboardScanner();
-
         Random rand =  new Random();
 
         int randRPS = rand.nextInt(3) + 1;  // 1 = rock 2 = paper 3 = scissors
@@ -85,7 +82,7 @@ public class RockPaperScissorsRoom extends Place {
         boolean userWon = false;
 
         i.io.display("Please choose Rock, Paper or Scissors");
-        String myInput = input.nextLine();
+        String myInput = i.io.getLine();
 
         if(myInput.equalsIgnoreCase("rock"))
             userRPS = 1;

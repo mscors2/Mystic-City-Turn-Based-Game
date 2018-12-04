@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by Vanson on 11/13/2018.
@@ -50,8 +49,7 @@ public class Portal extends Place {
 
                     i.io.display("Please enter a room name to teleport to:");
 
-                    Scanner input = new KeyboardScanner().getKeyboardScanner();
-                    String myInput = input.nextLine();
+                    String myInput = i.io.getLine();
 
                     for(int j = 0; j < keyList.size(); j++)
                     {
