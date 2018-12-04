@@ -109,7 +109,6 @@ public class Game
 		
 		// Build all Artifacts
 		int nArtifacts = Integer.parseInt(arr[1]);
-		System.out.println("NUM: " + nArtifacts);
 		for (int i = 0; i < nArtifacts; i++)
 		{
 			// Don't use this - Artifact will add itself to the collections
@@ -136,8 +135,8 @@ public class Game
 				if (c.isAlive())
 				{
 					c.makeMove();
-					System.out.println("Retrieving next hero...\n");
-					System.out.println("//------------------------------------------------------------------------// \n");
+					c.io.display("Retrieving next hero...\n");
+					c.io.display("//------------------------------------------------------------------------// \n");
 					
 					// Give the user some time to read the logs
 					try 
@@ -152,9 +151,9 @@ public class Game
 				}
 				else
 				{	
-					System.out.println(c.name() + " is dead! \n");
-					System.out.println("Retrieving next hero...\n");
-					System.out.println("//------------------------------------------------------------------------// \n");
+					c.io.display(c.name() + " is dead! \n");
+					c.io.display("Retrieving next hero...\n");
+					c.io.display("//------------------------------------------------------------------------// \n");
 					
 					// Give the user some time to read the logs
 					try 

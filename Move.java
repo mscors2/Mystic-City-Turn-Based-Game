@@ -23,7 +23,7 @@ public class Move
 	 */
 	public enum MoveType
 	{
-		QUIT, LOOK, INVENTORY, GO, GET, DROP, USE, PASS, MIX, ATTACK , READ, EAT;
+		QUIT, LOOK, INVENTORY, GO, GET, DROP, USE, PASS, MIX, ATTACK , READ, EAT, TEXT, GUI;
 	}
 	
 	/*

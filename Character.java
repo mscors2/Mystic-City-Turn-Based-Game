@@ -407,6 +407,7 @@ public class Character
 					else if((this.currCap + result.getMobility()) > this.CarryCap)
 					{
 						io.display("You cant carry this item! You do not have enough capacity!");
+						current.addArtifact(result);
 					}
 					else
 					{
@@ -687,6 +688,32 @@ public class Character
 						hasMoved = true;
 						break;
 					}
+				}
+				case TEXT:
+				{
+					io.display("Swapping to Text GUI (aka terminal)");
+					io.selectInterface(0);
+					break;
+				}
+				case GUI:
+				{
+					try 
+					{
+						int guiNum = Integer.parseInt(move.argument());
+						if (guiNum < 1 || guiNum > 3)
+							io.display("Sorry but that GUI # doesn't work");
+						io.display("Swapping to GUI " + guiNum);
+						io.selectInterface(guiNum);
+					} 
+					catch (NumberFormatException e) 
+					{
+						io.display("Sorry but that GUI # doesn't work");
+					}
+					break;
+				}
+				default:
+				{
+					break;
 				}
 			}
 			

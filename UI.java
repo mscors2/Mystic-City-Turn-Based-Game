@@ -18,8 +18,6 @@ public class UI implements DecisionMaker
 	public Move getMove(Character character, Place place) 
 	{	
 		// Prompt the user for a move and argument
-		KeyboardScanner ksc = new KeyboardScanner();
-		Scanner sc = ksc.getKeyboardScanner();
 		Move.MoveType type = Move.MoveType.PASS;	// temporary
 		String argument = "";						// temporary
 		
@@ -28,7 +26,7 @@ public class UI implements DecisionMaker
 		do
 		{
 			System.out.print(">> ");
-			String line = sc.nextLine().trim().toUpperCase();
+			String line = character.io.getLine();
 			String[] arr = line.split("\\s+");
 			
 			if 		(arr[0].equalsIgnoreCase("QUIT") || arr[0].equalsIgnoreCase("EXIT"))
@@ -55,7 +53,10 @@ public class UI implements DecisionMaker
 				type = Move.MoveType.MIX;
 			else if(arr[0].equalsIgnoreCase("ATTACK"))
 				type = Move.MoveType.ATTACK;
-			
+			else if (arr[0].equalsIgnoreCase("TEXT"))
+				type = Move.MoveType.TEXT;
+			else if (arr[0].equalsIgnoreCase("GUI"))
+				type = Move.MoveType.GUI;
 			else
 			{
 				// invalid user command, try again
@@ -71,8 +72,9 @@ public class UI implements DecisionMaker
 						+ " -> READ <artifact_name> \n"
 						+ " -> EAT <artifact_name> \n"
 						+ " -> MIX <potion_name1> <potion_name2> \n"
-						+ " -> ATTACK ");
-					
+						+ " -> ATTACK \n"
+						+ " -> TEXT \n"
+						+ " -> GUI <gui_number>");
 				
 				// keep looping
 				continue;
