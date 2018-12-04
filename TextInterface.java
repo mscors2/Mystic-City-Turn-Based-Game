@@ -16,6 +16,6 @@ public class TextInterface implements UserInterface
 	
 	public String getLine()
 	{
-		return new KeyboardScanner().getKeyboardScanner().next();
+		return CleanLineScanner.getCleanLine(new KeyboardScanner().getKeyboardScanner());
 	}
 }
