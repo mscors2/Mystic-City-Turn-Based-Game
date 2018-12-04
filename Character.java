@@ -704,6 +704,7 @@ public class Character
 							io.display("Sorry but that GUI # doesn't work");
 						io.display("Swapping to GUI " + guiNum);
 						io.selectInterface(guiNum);
+						io.display("New GUI! Hello!");
 					} 
 					catch (NumberFormatException e) 
 					{
