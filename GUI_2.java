@@ -80,4 +80,10 @@ public class GUI_2 implements UserInterface
 		return input;
 	}
 
+	@Override
+	public void display(Character c) {
+		// TODO Auto-generated method stub
+		c.display();
+	}
+
 }

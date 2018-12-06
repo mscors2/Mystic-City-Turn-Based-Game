@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /*
  * Name: 	Jack Delaney
  * NetID:   jdelan7
