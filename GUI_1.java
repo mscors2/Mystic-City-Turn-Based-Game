@@ -24,48 +24,46 @@ public class GUI_1 implements UserInterface
     private JButton lookButton;
     private JButton attackButton;
     private JButton passButton; 
+    
+    private String userInput;
 	
 	/* ----------------------------------------------------------------------------------------------------------- */
-	/* Methods */
+	/* Main Methods */
 	public void display(String str)
 	{
-		// Check if our window is already up
 		if (myFrame == null || output == null)
 			buildFrame();
-		
-		// Add our text to the output window (JTextArea)
 		output.append(str);
 	}
 	
 	public void display(Character c)
 	{
-		// Check if our window is already up
 		if (myFrame == null || output == null)
 			buildFrame();
-		
-		// Character class will handle its own display
 		c.display();
 	}
 	
 	public String getLine()
 	{
-		// Check if our window is already up
 		if (myFrame == null || input == null)
 			buildFrame();
 		 
 		//Turn on buttons and input text box
 		enableInput();
-		String result = "";
+		waitForInput();
 		disableInput();
 		
 		// Return user's input
-		return result;
+		return userInput;
 	}
 	
 	
+	/* ----------------------------------------------------------------------------------------------------------- */
+	/* Support Methods (Private) */
+	
 	// Instantiate a new JFrame aka GUI Window
 	@SuppressWarnings("deprecation")
-	public void buildFrame()
+	private void buildFrame()
 	{
 		// Init window's display properties
 		myFrame = new JFrame("Gaming Visual Apparatus (GUI_1)");
@@ -94,7 +92,7 @@ public class GUI_1 implements UserInterface
         input.setEditable(false);
         input.setBounds(290, 335, 275, 20);
         
-        JButton inputButton = new JButton("Act");
+        inputButton = new JButton("Act");
         inputButton.setBounds(570, 335, 55, 20);
         inputButton.setEnabled(false);
         try
@@ -157,7 +155,7 @@ public class GUI_1 implements UserInterface
 	}
 	
 	// This turns on our controls and input text box for the user to type in commands
-	public void enableInput()
+	private void enableInput()
 	{
 		input.setEditable(true);
 		inputButton.setEnabled(true);
@@ -167,7 +165,7 @@ public class GUI_1 implements UserInterface
 		passButton.setEnabled(true);
 	}
 	
-	public void disableInput()
+	private void disableInput()
 	{
 		input.setEditable(false);
 		inputButton.setEnabled(false);
@@ -175,5 +173,18 @@ public class GUI_1 implements UserInterface
 		lookButton.setEnabled(false);
 		attackButton.setEnabled(false);
 		passButton.setEnabled(false);
+	}
+	
+	// Force the process to wait for the User to input a non-empty command
+	private void waitForInput()
+	{
+		while (userInput == null || userInput.isEmpty())
+		{
+			// Wait for the user to input something
+			try 
+			{
+				Thread.sleep(200);
+			} catch(InterruptedException e) {}
+		}
 	}
 }
