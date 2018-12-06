@@ -30,8 +30,7 @@ public class Player extends Character
 	{		
 		// display basic Character/Place information
 		current.display(io);
-		display();
-		io.display("");
+		io.display(this);
 		
 		// did the Place kill us?
 		if (!isAlive)

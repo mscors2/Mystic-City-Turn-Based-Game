@@ -23,9 +23,7 @@ public class RockPaperScissorsRoom extends Place {
 
 
     public void display(IO io)
-    {
-    	System.err.println("DEBUG \n");
-    	
+    {    	
         if(allCharacters.size() > 0) {
             for (Character i : allCharacters) {
 

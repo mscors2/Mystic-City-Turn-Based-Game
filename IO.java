@@ -5,7 +5,6 @@
  * Project: Term Project Part V
  */
 
-// Singleton Class for the purpose of keeping things consistent	
 public class IO 
 {
 	/* ----------------------------------------------------------------------------------------------------------- */
@@ -29,6 +28,11 @@ public class IO
 	public void display(String str)
 	{
 		implementor.display(str);
+	}
+	
+	public void display(Character c)
+	{
+		implementor.display(c);
 	}
 	
 	public String getLine()

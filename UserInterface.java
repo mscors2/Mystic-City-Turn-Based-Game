@@ -10,5 +10,6 @@ public interface UserInterface
 	/* ----------------------------------------------------------------------------------------------------------- */
 	/* Methods */
 	public void display(String str);
+	public void display(Character c);
 	public String getLine();
 }
