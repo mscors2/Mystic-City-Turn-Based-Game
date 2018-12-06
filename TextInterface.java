@@ -14,6 +14,11 @@ public class TextInterface implements UserInterface
 		System.out.println(str);
 	}
 	
+	public void display(Character c)
+	{
+		c.display();
+	}
+	
 	public String getLine()
 	{
 		return CleanLineScanner.getCleanLine(new KeyboardScanner().getKeyboardScanner());
