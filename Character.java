@@ -337,6 +337,7 @@ public class Character
 				{
 					// Exit/Quit out of the entire game (lot of power for any Player)
 					io.display("*Well at least you tried, it's been fun! Try again sometime won't you?* \n");
+					System.out.println("Exiting the game... goodbye~ \n");
 					System.exit(0);
 				}
 				case INVENTORY:

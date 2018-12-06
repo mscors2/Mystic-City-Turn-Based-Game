@@ -32,7 +32,7 @@ public class NPC extends Character
 		// Display basic Character/Place information
 		current.display(io);
 		display();
-		io.display("");
+		io.display("\n");
 		
 		// Did Place kill us?
 		if (!isAlive)
