@@ -143,6 +143,7 @@ public class GUI_2 implements UserInterface
 		textArea.setCaretPosition(textArea.getDocument().getLength());
 		frame.setVisible(true);
 
+		//if moved to different gui or text interface dispose frame
 		if(dispose == true)
 			frame.dispose();
 
@@ -158,6 +159,7 @@ public class GUI_2 implements UserInterface
 		c.display();
 		frame.setVisible(true);
 
+		//if moved to different gui or text interface dispose frame
 		if(dispose == true)
 			frame.dispose();
 	}
@@ -168,6 +170,7 @@ public class GUI_2 implements UserInterface
 		inputButton.setEnabled(true);
 		input = null;
 
+		//waiting for input from inputArea
 		while(input == null) {
 			inputButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -179,6 +182,8 @@ public class GUI_2 implements UserInterface
 			});
 		}
 
+		
+		//tokenizing input
 		String[] inputArr = input.split("\\s+");
 
 		if(inputArr[0].equalsIgnoreCase("TEXT") || inputArr[0].equalsIgnoreCase("GUI"))
