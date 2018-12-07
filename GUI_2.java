@@ -1,6 +1,7 @@
 /*
  * TODO: Vanson Ho
  */
+//Vanson Ho
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -182,7 +183,7 @@ public class GUI_2 implements UserInterface
 			});
 		}
 
-		
+
 		//tokenizing input
 		String[] inputArr = input.split("\\s+");
 
