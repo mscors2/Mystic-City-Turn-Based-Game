@@ -12,6 +12,12 @@ public class GUI_2 implements UserInterface
 	private JScrollPane scrollPane;
 	private JLabel label;
 	private JButton button;
+
+
+	private JTextArea playerArea;
+	private JTextArea hpArea;
+	private JTextArea attackArea;
+	private JTextArea placeArea;
 	/*
         GUI_2()
         {
@@ -38,29 +44,44 @@ public class GUI_2 implements UserInterface
 	{
 
 		frame = new JFrame("MY_FRAME");
-		frame.setLayout(new FlowLayout());
+		frame.setLayout(null);
+		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(800,800);
+		frame.setSize(700,500);
 		frame.setTitle("The Best Game Ever");
 
-		/*
-		textArea = new JTextArea(5,30);
-		scrollPane = new JScrollPane(textArea);
-		button = new JButton("Enter this to end turn");
-		frame.setLayout(new FlowLayout());
 
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		frame.add(scrollPane);
+		Font myFont = new Font("Algerian", Font.PLAIN, 16);
 
-*/
-
-		textArea = new JTextArea(20,60);
+		textArea = new JTextArea(20,25);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
 
 		scrollPane = new JScrollPane(textArea);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(50, 25, 425, 300);
 		frame.add(scrollPane);
-//		frame.add(textArea);
+
+		//player area setup
+		playerArea = new JTextArea(1, 30);
+		playerArea.setBounds(490, 40, 175, 20);
+		playerArea.setFont(myFont);
+		playerArea.setForeground(Color.RED);
+		frame.add(playerArea);
+
+		//hpArea setup
+		playerArea = new JTextArea(1, 30);
+		playerArea.setBounds(490, 40, 175, 20);
+		playerArea.setFont(myFont);
+		playerArea.setForeground(Color.RED);
+		frame.add(playerArea);
+
+
 		frame.setVisible(true);
+
+
 
 	}
 
@@ -72,6 +93,14 @@ public class GUI_2 implements UserInterface
 		frame.setVisible(true);
 
 	}
+
+	public void display(Character c)
+	{
+		frame.setTitle(c.name());
+		playerArea.setText("Player: " + c.name());
+		c.display();
+		frame.setVisible(true);
+	}
 	public String getLine()
 	{
 		String input = JOptionPane.showInputDialog(null, "Input", "Please type a String", 0);
@@ -80,10 +109,6 @@ public class GUI_2 implements UserInterface
 		return input;
 	}
 
-	@Override
-	public void display(Character c) {
-		// TODO Auto-generated method stub
-		c.display();
-	}
+
 
 }
