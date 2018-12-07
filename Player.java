@@ -39,7 +39,6 @@ public class Player extends Character
 			return;
 		}
 
-		
 		UI ui = new UI();
 		Move move = ui.getMove(this, current);
 		

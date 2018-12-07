@@ -311,7 +311,7 @@ public class Character
 	{
 		// Print current Place and Player information
 		current.display(io);
-		display();
+		io.display(this);
 	}
 	
 	/*
@@ -705,6 +705,7 @@ public class Character
 						io.display("Swapping to GUI " + guiNum);
 						io.selectInterface(guiNum);
 						io.display("New GUI! Hello!");
+						io.display(this);
 					} 
 					catch (NumberFormatException e) 
 					{
