@@ -26,6 +26,8 @@ public class GUI_2 implements UserInterface
 	private JTextArea placeArea;
 	private JTextArea inputArea;
 	private String input;
+
+	private boolean dispose;
 	GUI_2()
 	{
 
@@ -34,6 +36,7 @@ public class GUI_2 implements UserInterface
 			return;
 		}
 
+		dispose = false;
 		//initializing input
 		input = "";
 
@@ -44,6 +47,7 @@ public class GUI_2 implements UserInterface
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(700,500);
 		frame.setTitle("The Best Game Ever");
+		frame.setResizable(false);
 
 		try {
 			frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("dungeon.jpg")))));
@@ -139,6 +143,9 @@ public class GUI_2 implements UserInterface
 		textArea.setCaretPosition(textArea.getDocument().getLength());
 		frame.setVisible(true);
 
+		if(dispose == true)
+			frame.dispose();
+
 	}
 
 	public void display(Character c)
@@ -150,6 +157,9 @@ public class GUI_2 implements UserInterface
 		placeArea.setText( "Place: "+ c.current.name());
 		c.display();
 		frame.setVisible(true);
+
+		if(dispose == true)
+			frame.dispose();
 	}
 
 	public String getLine()
@@ -172,7 +182,7 @@ public class GUI_2 implements UserInterface
 		String[] inputArr = input.split("\\s+");
 
 		if(inputArr[0].equalsIgnoreCase("TEXT") || inputArr[0].equalsIgnoreCase("GUI"))
-			frame.dispose();
+			dispose = true;
 
 		return input.trim();
 	}
