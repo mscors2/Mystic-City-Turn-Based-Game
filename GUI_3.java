@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.JScrollPane;
 
@@ -32,7 +33,7 @@ public class GUI_3 implements UserInterface
 	private JTextArea note;
 	private JTextArea note2;
 	private JTextArea inputNote;
-	private JTextArea inputText;
+	private JTextField inputText;
 	
 	private String Input;
 	
@@ -83,7 +84,7 @@ public class GUI_3 implements UserInterface
 		frame.add(inputNote);
 		
 		//set up input text area
-		inputText = new JTextArea();
+		inputText = new JTextField();
 		inputText.setEditable(false);
 		inputText.setBackground(Color.RED);
 		inputText.setForeground(Color.BLACK);
@@ -114,6 +115,10 @@ public class GUI_3 implements UserInterface
         pButton.setBounds(50, 530, 100, 30);
         eButton.setBounds(475, 475, 100, 100);
         
+        iButton.setEnabled(false);
+        lButton.setEnabled(false);
+        aButton.setEnabled(false);
+        pButton.setEnabled(false);
         
         //colors
         iButton.setForeground(Color.MAGENTA);
@@ -173,7 +178,7 @@ public class GUI_3 implements UserInterface
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				Input = "";
+				Input = "Look";
 			}
 		});
 		
@@ -191,6 +196,40 @@ public class GUI_3 implements UserInterface
 			}
 		};
 		inputText.addActionListener(action);
+	}
+	
+	private void enableInput()
+	{
+		inputText.setEditable(true);
+		inputText.setText("");
+		
+		iButton.setEnabled(true);
+		lButton.setEnabled(true);
+		aButton.setEnabled(true);
+		pButton.setEnabled(true);
+	}
+	
+	private void disableInput()
+	{
+		inputText.setEditable(false);
+		
+		iButton.setEnabled(false);
+		lButton.setEnabled(false);
+		aButton.setEnabled(false);
+		pButton.setEnabled(false);
+	}
+	
+	// Force the process to wait for the User to interact with the GUI
+	private void waitForInput()
+	{
+		while (Input == null || Input.isEmpty())
+		{
+			// Wait for the user to input something
+			try 
+			{
+				Thread.sleep(200);
+			} catch(InterruptedException e) {}
+		}
 	}
 	
 	
@@ -238,12 +277,17 @@ public class GUI_3 implements UserInterface
 	{
 		// TODO
 	
-		String input = JOptionPane.showInputDialog(null, "Input", "Please type a Command", 0);
+		//Turn on buttons and input text box
+		enableInput();
+		waitForInput();
+		disableInput();
 		
-		String[] arr = input.split("\\s+");
+		String userInput = Input;
+		Input = "";
+		String[] arr = userInput.split("\\s+");
 		if (arr[0].trim().equalsIgnoreCase("TEXT") || arr[0].trim().equalsIgnoreCase("GUI"))
 			frame.dispose();
 		
-		return input;	
+		return userInput;	
 	}
 }
