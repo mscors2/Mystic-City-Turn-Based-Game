@@ -3,11 +3,7 @@ Group #:	12
 Proj #:		5
 
 Notes:
-	We ALL took a LATE DAY on this assignment (only one which should be penalty free)
-
-GUI_1 = Jack Delaney    (jdelan7)
-GUI_2 = Vanson Ho       (vho6)
-GUI_3 = Michael Scorsolini (mscors2)
+	
 
 //--------------------------------------------------------------------------------------//
 
